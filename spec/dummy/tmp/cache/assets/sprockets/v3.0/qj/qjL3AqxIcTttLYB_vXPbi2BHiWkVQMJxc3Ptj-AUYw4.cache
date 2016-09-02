@@ -1,9 +1,0 @@
-I"£(function() {
-  $(function() {
-    return $('[data-toggle="submit-on-change"]').change(function() {
-      return this.form.submit();
-    });
-  });
-
-}).call(this);
-:ET

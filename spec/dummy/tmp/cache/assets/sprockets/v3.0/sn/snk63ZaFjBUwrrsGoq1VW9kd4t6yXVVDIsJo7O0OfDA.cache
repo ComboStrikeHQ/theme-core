@@ -1,7 +1,0 @@
-I"~(function() {
-  $(function() {
-    return $('.navbar .active').parents('.dropdown').addClass('active');
-  });
-
-}).call(this);
-:ET

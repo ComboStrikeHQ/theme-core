@@ -1,5 +1,0 @@
-I"D(function() {
-  hljs.initHighlightingOnLoad();
-
-}).call(this);
-:ET

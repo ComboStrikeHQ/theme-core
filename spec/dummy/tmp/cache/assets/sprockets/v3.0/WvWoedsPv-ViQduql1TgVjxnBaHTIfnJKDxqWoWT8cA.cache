@@ -1,7 +1,0 @@
-I"†(function() {
-  $(document).on('uic:domchange', function() {
-    return console.log('uic:domchange was fired');
-  });
-
-}).call(this);
-:ET
