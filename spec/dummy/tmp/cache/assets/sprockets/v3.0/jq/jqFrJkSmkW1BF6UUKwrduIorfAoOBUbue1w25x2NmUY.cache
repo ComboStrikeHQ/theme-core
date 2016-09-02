@@ -1,0 +1,18 @@
+I"a(function() {
+  $(document).on('uic:domchange', function() {
+    var $body, navHeight;
+    $('.sidebar').affix({
+      offset: {
+        top: 0
+      }
+    });
+    $body = $(document.body);
+    navHeight = $('.navbar').outerHeight(true) + 10;
+    return $body.scrollspy({
+      target: '.left-col',
+      offset: navHeight
+    });
+  });
+
+}).call(this);
+:ET

@@ -1,0 +1,11 @@
+I"ë(function() {
+  $(function() {
+    return $('.dropdown').each(function(i, dropdown) {
+      if ($(dropdown).find('ul li:not(.divider)').length === 0) {
+        return $(dropdown).find('a').hide();
+      }
+    });
+  });
+
+}).call(this);
+:ET

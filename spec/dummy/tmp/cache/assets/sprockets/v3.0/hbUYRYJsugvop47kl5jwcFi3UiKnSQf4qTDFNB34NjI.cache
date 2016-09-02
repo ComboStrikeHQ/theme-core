@@ -1,0 +1,7 @@
+I"q(function() {
+  if (Turbolinks.enableProgressBar) {
+    Turbolinks.enableProgressBar();
+  }
+
+}).call(this);
+:ET

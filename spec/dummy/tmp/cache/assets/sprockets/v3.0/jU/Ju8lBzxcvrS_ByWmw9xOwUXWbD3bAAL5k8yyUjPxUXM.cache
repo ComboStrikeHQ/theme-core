@@ -1,0 +1,14 @@
+I",(function() {
+  $(function() {
+    return $('[data-toggle="chosen"]').each(function() {
+      var $this, data;
+      $this = $(this);
+      data = $this.data();
+      data.search_contains = true;
+      data.allow_single_deselect = true;
+      return $this.chosen(data);
+    });
+  });
+
+}).call(this);
+:ET

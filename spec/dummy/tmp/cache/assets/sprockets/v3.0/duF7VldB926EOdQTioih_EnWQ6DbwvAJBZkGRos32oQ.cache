@@ -1,0 +1,73 @@
+I"¤
+(function() {
+  $(document).on('uic:domchange', function(e) {
+    var defaults, ranges, today, yesterday;
+    today = function() {
+      return moment().startOf('day');
+    };
+    yesterday = today().subtract(1, 'days');
+    ranges = {
+      'Yesterday': [yesterday, yesterday],
+      'Last 7 Days': [today().subtract(7, 'days'), yesterday],
+      'Last 14 Days': [today().subtract(14, 'days'), yesterday],
+      'Last 30 Days': [today().subtract(30, 'days'), yesterday],
+      'Month to Date': [today().startOf('month'), today()],
+      'Last Month': [today().subtract(1, 'month').startOf('month'), today().subtract(1, 'month').endOf('month').startOf('day')]
+    };
+    defaults = {
+      ranges: ranges,
+      opens: 'right',
+      format: 'YYYY-MM-DD',
+      submitOnChange: false
+    };
+    return $(e.target).find('.ui-components-date-range').each(function(_i, el) {
+      var $el, $end_input, $form, $start_input, callback, end_date, options, reset, start_date;
+      $el = $(el);
+      $form = $el.parents('form');
+      $start_input = $($el.data().start);
+      $end_input = $($el.data().end);
+      start_date = _.find([$el.data('startDate'), $start_input.val(), yesterday], function(val) {
+        return val && val.toString().length > 0;
+      });
+      end_date = _.find([$el.data('endDate'), $end_input.val(), yesterday], function(val) {
+        return val && val.toString().length > 0;
+      });
+      options = _.extend({}, defaults, _.pick($el.data(), ['dateLimit', 'ranges', 'submitOnChange']), {
+        startDate: start_date,
+        endDate: end_date
+      });
+      options.ranges = _.mapObject(options.ranges, function(v, k) {
+        return _.map(v, function(v) {
+          return moment(v);
+        });
+      });
+      options.startDate = moment(options.startDate);
+      options.endDate = moment(options.endDate);
+      reset = function(start, end) {
+        var label, range, range_label, ref;
+        end.startOf('day');
+        $start_input.val(start.format('YYYY-MM-DD'));
+        $end_input.val(end.format('YYYY-MM-DD'));
+        label = 'Custom Range';
+        ref = options.ranges;
+        for (range_label in ref) {
+          range = ref[range_label];
+          if (range[0].diff(start) === 0 && range[1].diff(end) === 0) {
+            label = range_label;
+          }
+        }
+        return $el.html(label + ' (' + start.format('YYYY-MM-DD') + ' - ' + end.format('YYYY-MM-DD') + ')');
+      };
+      callback = function(start, end) {
+        reset(start, end);
+        if (($el.data().submitOnChange)) {
+          return $form.submit();
+        }
+      };
+      $el.daterangepicker(options, callback);
+      return reset(options.startDate, options.endDate);
+    });
+  });
+
+}).call(this);
+:ET

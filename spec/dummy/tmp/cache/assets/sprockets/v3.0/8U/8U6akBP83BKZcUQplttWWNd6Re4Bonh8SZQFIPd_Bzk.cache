@@ -1,0 +1,32 @@
+I"†(function() {
+  var setFloatThead;
+
+  setFloatThead = function() {
+    var margin_top;
+    margin_top = $('.navbar-fixed-top, .navbar-static-top').height();
+    return $('table[data-toggle=sticky-header]').floatThead({
+      position: 'fixed',
+      top: margin_top
+    });
+  };
+
+  $(document).on('uic:domchange', function() {
+    $(window).one('scroll', function() {
+      return setFloatThead();
+    });
+    $('.collapse').on('show.bs.collapse', function(e) {
+      return $('table[data-toggle=sticky-header]').floatThead('destroy');
+    });
+    $('.collapse').on('hide.bs.collapse', function(e) {
+      return $('table[data-toggle=sticky-header]').floatThead('destroy');
+    });
+    $('.collapse').on('hidden.bs.collapse', function(e) {
+      return setFloatThead();
+    });
+    return $('.collapse').on('shown.bs.collapse', function(e) {
+      return setFloatThead();
+    });
+  });
+
+}).call(this);
+:ET

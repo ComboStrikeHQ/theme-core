@@ -1,0 +1,48 @@
+I"Ó(function() {
+  var init_group_selectable, transform_keys, underscore;
+
+  init_group_selectable = function(select) {
+    var chosen;
+    chosen = select.next();
+    return chosen.on('click', '.group-result', function(e) {
+      var group_name, options, target;
+      target = $(e.target);
+      group_name = target.text();
+      options = select.find('optgroup[label="' + group_name + '"]').children();
+      options.attr('selected', 'selected');
+      return select.trigger('chosen:updated');
+    });
+  };
+
+  $(function() {
+    return $('.ui-components-select').each(function() {
+      var $this, data;
+      $this = $(this);
+      data = transform_keys($this.data(), underscore);
+      data.search_contains = true;
+      $this.chosen(data);
+      init_group_selectable($this);
+      if (data.remote_options) {
+        return $this.ajaxChosen({
+          type: 'GET',
+          url: data.remote_options,
+          dataType: 'json'
+        });
+      }
+    });
+  });
+
+  underscore = function(str) {
+    return str.replace(/[A-Z]/g, function(m) {
+      return '_' + m.toLowerCase();
+    });
+  };
+
+  transform_keys = function(obj, f) {
+    return _.object(_.map(obj, function(v, k) {
+      return [f(k), v];
+    }));
+  };
+
+}).call(this);
+:ET

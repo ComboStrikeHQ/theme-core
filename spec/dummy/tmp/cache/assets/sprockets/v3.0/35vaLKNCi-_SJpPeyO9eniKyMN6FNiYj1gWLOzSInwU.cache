@@ -1,0 +1,7 @@
+I"k(function() {
+  $(function() {
+    return $(document).trigger('uic:domchange');
+  });
+
+}).call(this);
+:ET

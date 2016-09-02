@@ -1,0 +1,9 @@
+I"ª(function() {
+  $(function() {
+    return $(document).on('shown.bs.modal', function(e) {
+      return $(e.target).trigger('uic:domchange');
+    });
+  });
+
+}).call(this);
+:ET
