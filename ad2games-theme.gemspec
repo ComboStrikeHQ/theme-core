@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.summary = 'UI theme for ad2games projects'
 
   s.files = Dir[
-    'app/**/*'
+    '{app, lib}/**/*'
   ]
 
   s.add_dependency 'rails', '~> 4.2.0'
