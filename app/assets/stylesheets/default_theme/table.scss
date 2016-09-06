@@ -47,6 +47,14 @@
     }
   }
 
+  &.highlight-last-row > tbody > tr:last-child td,
+  &.highlight-last-row > tr:last-child td,
+  tr.highlight-row td {
+    background: rgba($brand-secondary, .1);
+    font-weight: bold;
+    border-top: 1px dotted $brand-secondary;
+  }
+
   // '> tbody > tr > td' to override bootstrap
   // 'td' to cover tables without tbody
   td,
