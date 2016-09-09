@@ -3,7 +3,7 @@ $:.push File.expand_path("../lib", __FILE__)
 
 Gem::Specification.new do |s|
   s.name      = 'ad2games-theme'
-  s.version   = 0.5
+  s.version   = 0.6
   s.platform  = Gem::Platform::RUBY
   s.authors   = ['ad2games']
   s.email     = ['developers@ad2games.com']
