@@ -13,6 +13,5 @@ Gem::Specification.new do |s|
   s.files     = `git ls-files`.split("\n")
   s.require_paths = ['lib', 'assets', 'fonts']
 
-  s.add_dependency 'rails', '~> 4.2.0'
   s.add_dependency 'sass-rails'
 end
