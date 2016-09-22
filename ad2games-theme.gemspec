@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-$:.push File.expand_path("../lib", __FILE__)
+$LOAD_PATH.push File.expand_path('../lib', __FILE__)
 
 Gem::Specification.new do |s|
   s.name      = 'ad2games-theme'
@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.summary   = 'UI theme for ad2games projects'
 
   s.files     = `git ls-files`.split("\n")
-  s.require_paths = ['lib', 'assets', 'fonts']
+  s.require_paths = %w(lib assets fonts)
 
   s.add_dependency 'sass-rails'
 end

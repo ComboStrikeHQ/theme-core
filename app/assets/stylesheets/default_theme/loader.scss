@@ -10,6 +10,7 @@ $loader-size: 1em !default;
   height: 1em;
   border-radius: 50%;
   border: 2px solid $loader-bg;
+  // scss-lint:disable DuplicateProperty
   background: $loader-primary;
   background: -moz-linear-gradient(left, $loader-primary 10%, rgba($loader-primary, 0) 42%);
   background: -webkit-linear-gradient(left, $loader-primary 10%, rgba($loader-primary, 0) 42%);
@@ -24,18 +25,18 @@ $loader-size: 1em !default;
   transform: translateZ(0);
 }
 
-.loader:before {
+.loader::before {
   width: 50%;
   height: 50%;
   background: $loader-primary;
-  border-radius: 100% 0 0 0;
+  border-radius: 100% 0 0;
   position: absolute;
   top: 0;
   left: 0;
   content: '';
 }
 
-.loader:after {
+.loader::after {
   background: $loader-bg;
   width: 75%;
   height: 75%;
@@ -54,6 +55,7 @@ $loader-size: 1em !default;
     -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
   }
+
   100% {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
@@ -65,6 +67,7 @@ $loader-size: 1em !default;
     -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
   }
+
   100% {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
