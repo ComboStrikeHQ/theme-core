@@ -1,2 +1,13 @@
-@import 'ui_components/*';
-@import 'default_theme/*';
+@import 'ui_components/checkbox_list';
+@import 'ui_components/date_range';
+@import 'ui_components/date_selector';
+@import 'ui_components/markdown_textarea';
+
+@import 'default_theme/button';
+@import 'default_theme/common';
+@import 'default_theme/footer';
+@import 'default_theme/form';
+@import 'default_theme/loader';
+@import 'default_theme/navbar';
+@import 'default_theme/table';
+@import 'default_theme/toolbar';
