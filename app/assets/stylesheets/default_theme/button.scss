@@ -39,8 +39,6 @@
 
   &:active,
   &.active,
-  &:focus,
-  &.focus,
   &:active:focus,
   &:active.focus,
   &.active:focus,
@@ -63,10 +61,15 @@
     color: $btn-primary-hover-color;
   }
 
+  &:focus,
+  &.focus {
+    background-color: $btn-primary-bg;
+    border-color: darken($btn-primary-border, 15%);
+    color: darken($btn-primary-color, 15%);
+  }
+
   &:active,
   &.active,
-  &:focus,
-  &.focus,
   &:active:focus,
   &:active.focus,
   &.active:focus,
