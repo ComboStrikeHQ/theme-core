@@ -98,6 +98,25 @@
       border-radius: 0 $border-radius-base $border-radius-base 0;
     }
   }
+
+  // toolbar checkboxes appear as toggleable buttons
+  .checkbox-btn-group li {
+
+    // scss-lint:disable QualifyingElement
+    input[type='checkbox'] {
+      display: none;
+    }
+
+    label {
+      margin: 0;
+      font-style: normal;
+    }
+
+    // scss-lint:disable PlaceholderInExtend
+    input[type='checkbox']:checked + label {
+      @extend .btn-default.active;
+    }
+  }
 }
 
 .toolbar-default {
