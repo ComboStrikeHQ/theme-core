@@ -77,7 +77,7 @@
   &:active:hover,
   &.active:hover {
     background-color: darken($btn-primary-hover-bg, 15%);
-    border-color: $btn-primary-hover-border;
+    border-color: darken($btn-primary-hover-bg, 15%);
     color: $btn-primary-hover-color;
   }
 }
