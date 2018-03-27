@@ -1,52 +1,10 @@
-// NEVALY COLOURS
-$color-advertiser:    #834c98;
-$color-influencer:    #ff8a00;
-$color-gray:          #d4d9df;
-$color-info:          #00bad1;
-$color-update:        #ff336f;
-
-// BRAND COLOURS
-$facebook:            #3b5998;
-$twitch:              #6441a4;
-$twitter:             #55acee;
-$youtube:             #d02525;
-
-// GRAYS
-$white:               #fff;
-$gray-100:            #f8f9fa;
-$gray-200:            #e9ecef;
-$gray-300:            #dee2e6;
-$gray-400:            #ced4da;
-$gray-500:            #adb5bd;
-$gray-600:            #868e96;
-$gray-700:            #495057;
-$gray-800:            #343a40;
-$gray-900:            #212529;
-$black:               #000;
-
 // STATUS
-$primary:             $color-advertiser;
-$info:                $color-info;
-$update:              $color-update;
-$gray:                $color-gray;
+$gray:                #d4d9df;
+$update:              #ff336f;
 
 // THEME COLOURS
 // used for generating colour variation classes for buttons, badges, background, etc.
 $theme-colors: (
-  'primary':          $primary,
-  'info':             $info,
-  'update':           $update,
   'gray':             $gray,
-  'facebook':         $facebook,
-  'twitch':           $twitch,
-  'twitter':          $twitter,
-  'youtube':          $youtube
-);
-
-// setting static colours for Suppliers in Advertiser reports
-$adcampaign-supplier-colors: (
-  <% colors = Advertiser::AdvertiserCampaign::Report::OverviewCell::SUPPLIER_COLORS %>
-  <% colors.each do |palette| %>
-    (bg: <%= palette[:bg] %>, text: <%= palette[:text] %>),
-  <% end %>
+  'update':           $update
 );
