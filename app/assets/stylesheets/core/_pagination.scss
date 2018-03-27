@@ -1,0 +1,40 @@
+.pagination {
+  margin-top: $spacer;
+  display: flex;
+  justify-content: center;
+
+  .page,
+  .first,
+  .prev,
+  .next,
+  .last {
+    > a,
+    &.current,
+    &.gap {
+      @extend .page-link;
+      font-style: italic;
+    }
+
+    &.current,
+    &.gap {
+      color: $pagination-active-color;
+      pointer-events: none;
+      background-color: $pagination-active-bg;
+      border-color: $pagination-active-border-color;
+    }
+
+    &:first-child {
+      a,
+      &.current {
+        @include border-left-radius($border-radius);
+      }
+    }
+
+    &:last-child {
+      a,
+      &.current {
+        @include border-right-radius($border-radius);
+      }
+    }
+  }
+}

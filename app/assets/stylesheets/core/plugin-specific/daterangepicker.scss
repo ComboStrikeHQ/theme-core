@@ -1,0 +1,159 @@
+// scss-lint:disable SelectorFormat QualifyingElement
+$calendar-border: 1px solid $light;
+
+.DayPicker-NavBar span {
+  line-height: $line-height-lg;
+}
+
+.DayPicker-NavBar span:hover .fa,
+.daterangepicker th.available:hover {
+  color: $primary;
+  background-color: transparent;
+}
+
+.DayPicker-Caption,
+.calendar-table thead th.month {
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  height: #{$line-height-lg + 'em'};
+  font-weight: normal;
+}
+
+.calendar-table thead tr:last-child th,
+.DayPicker-Weekday {
+  padding: ($spacer / 2) ($spacer / 4);
+  font-size: $font-size-sm;
+  text-align: center;
+  font-weight: normal;
+  color: $secondary;
+
+  abbr[title],
+  abbr[data-original-title] {
+    font-size: $font-size-sm;
+    -webkit-text-decoration: none;
+    border-bottom: 0;
+    cursor: default;
+    text-decoration: none;
+  }
+}
+
+.daterangepicker td,
+.DayPicker-Day {
+  &,
+  &.available,
+  &.off,
+  &.start-date,
+  &.end-date,
+  &.start-date.end-date {
+    border-radius: 0;
+    border: $calendar-border;
+    font-size: $font-size-sm;
+    line-height: $line-height-base;
+    padding: ($spacer / 3) ($spacer / 2);
+
+    &:hover {
+      cursor: pointer;
+      color: $body-color;
+      border: $calendar-border;
+      background-color: $light;
+    }
+  }
+}
+
+.daterangepicker td.available.start-date.end-date,
+.DayPicker-Day--today {
+  background-color: $light;
+  color: $update;
+}
+
+.daterangepicker td.available.in-range,
+.daterangepicker td.available.in-range:hover {
+  color: $body-color;
+  background-color: rgba($info, .1);
+}
+
+.daterangepicker td.off,
+.daterangepicker td.available.off,
+.DayPicker-Day.DayPicker-Day--outside {
+  font-style: italic;
+  font-weight: 100;
+  color: $gray-400;
+  border: $calendar-border;
+
+  &:hover {
+    cursor: pointer;
+    color: $body-color;
+    border: $calendar-border;
+    background-color: $light;
+  }
+}
+
+.daterangepicker td.active,
+.daterangepicker td.active:hover,
+.daterangepicker td.available.active,
+.daterangepicker td.available.active:hover,
+.DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside) {
+  color: $white;
+  background-color: $info;
+}
+
+.DayPicker {
+  padding: 4px 0;
+}
+
+.DayPicker-Month {
+  margin: 0;
+}
+
+.daterangepicker {
+  @extend %popover-panel;
+
+  th {
+    border: 0;
+  }
+
+  &::before {
+    top: -$popover-arrow-width;
+    border-right: $popover-arrow-width solid transparent;
+    border-left: $popover-arrow-width solid transparent;
+    border-bottom: $popover-arrow-width solid rgba($black, .25); // match popovers
+  }
+
+  &::after {
+    top: calc((#{$popover-arrow-width} - #{$border-width}) * -1);
+    border-right: calc(#{$popover-arrow-width} - #{$border-width}) solid transparent;
+    border-bottom: calc(#{$popover-arrow-width} - #{$border-width}) solid $white;
+    border-left: calc(#{$popover-arrow-width} - #{$border-width}) solid transparent;
+  }
+
+  &.opensleft {
+    &::before {
+      right: calc(#{$popover-arrow-width * 2} - #{$border-width});
+    }
+
+    &::after {
+      right: ($popover-arrow-width * 2);
+    }
+  }
+
+  &.opensright {
+    &::before {
+      left: calc(#{$popover-arrow-width * 2} - #{$border-width});
+    }
+
+    &::after {
+      left: ($popover-arrow-width * 2);
+    }
+  }
+
+  .applyBtn,
+  .cancelBtn {
+    width: 100%;
+    margin-bottom: $spacer / 4;
+  }
+
+  .cancelBtn {
+    @extend .btn-outline-secondary;
+  }
+}
+// scss-lint:enable SelectorFormat

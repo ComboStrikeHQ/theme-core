@@ -1,0 +1,80 @@
+body {
+  $nav-height: ($nav-link-height + ($navbar-padding-y * 2));
+  min-height: 100vh;
+  padding: 0 0 ($nav-height + ($spacer * 5));
+  position: relative;
+}
+
+footer {
+  bottom: 0;
+  padding-bottom: $spacer;
+  padding-top: $spacer;
+  position: absolute;
+}
+
+// shadows are applied to all cards (and other relevant elements),
+// then removed for all those nested within a content-container (eg. a card, modal or popover).
+// the goal is that only 'top-level' (floating over the page-body) elements have shadows
+%card-shadow {
+  box-shadow: $shadow-xl, $shadow-sm;
+
+  @each $color, $value in $theme-colors {
+    &.border-#{$color} {
+      @include card-shadow-color($value);
+    }
+  }
+}
+
+.card,
+.btn:not(.btn-link),
+.form-group {
+  @extend %card-shadow;
+
+  .card &,
+  .modal &,
+  .popover & {
+    box-shadow: none;
+  }
+}
+
+// fix for top-level form-group shadows showing squared-off corners when containing cards/buttons
+.form-group {
+  border-radius: $card-border-radius;
+
+  .card &,
+  .modal &,
+  .popover & {
+    border-radius: 0;
+  }
+}
+
+// for top-level elements that should appear flat against the background/page-body
+.no-shadow {
+  box-shadow: none;
+}
+
+.alert {
+  margin-bottom: 0;
+
+  .close {
+    line-height: .8;
+  }
+}
+
+// fix for generated markup using BS3 badge class
+.badge-default {
+  @extend .badge-secondary;
+}
+
+// fix for bug with collapsing elements disappearing and reappearing during transition
+.collapse.in,
+.collapsing {
+  display: block;
+}
+
+// when using '*-body' classes for padding and 'hr' for section separation
+.card-body + hr,
+.modal-body + hr {
+  border-style: dashed;
+  margin: 0;
+}

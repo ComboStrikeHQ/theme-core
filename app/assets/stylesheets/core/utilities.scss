@@ -1,0 +1,37 @@
+.overflow-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.table--v-top tbody {
+  th:not([rowspan]),
+  td:not([rowspan]) {
+    vertical-align: top;
+  }
+}
+
+.table--v-middle tbody {
+  th,
+  td {
+    vertical-align: middle;
+  }
+}
+
+.text--v-super {
+  vertical-align: super;
+  font-size: .8em;
+  margin: 0 ($spacer / 4);
+}
+
+.w-1 {
+  white-space: nowrap;
+}
+
+.rtl {
+  direction: rtl;
+}

@@ -1,0 +1,136 @@
+%popover-panel {
+  box-shadow: $popover-box-shadow;
+  border: $border-width solid $popover-border-color;
+  border-radius: $border-radius-lg;
+}
+
+.popover {
+  @extend %popover-panel;
+
+  .popover-title {
+    @extend .popover-header;
+  }
+
+  .popover-content,
+  .popover-body {
+    @extend .popover-body;
+
+    .popover-header {
+      margin-left: -$popover-body-padding-x;
+      margin-right: -$popover-body-padding-x;
+      margin-top: -$popover-body-padding-y;
+    }
+
+    .v-divider {
+      border-left: 1px dashed $gray-200;
+    }
+
+    .alert {
+      $alert-offset-x: calc(#{-$popover-body-padding-x} - #{$border-width});
+      $alert-offset-y: calc(#{-$popover-body-padding-y} - #{$border-width});
+
+      margin-left: $alert-offset-x;
+      margin-right: $alert-offset-x;
+
+      &:first-child {
+        border-top-left-radius: $border-radius-lg;
+        border-top-right-radius: $border-radius-lg;
+        margin-top: $alert-offset-y;
+      }
+
+      &:last-child {
+        border-bottom-left-radius: $border-radius-lg;
+        border-bottom-right-radius: $border-radius-lg;
+        margin-bottom: $alert-offset-y;
+      }
+    }
+  }
+
+  &.in {
+    @extend .show;
+  }
+
+  &.top,
+  &.bottom {
+    .arrow {
+      left: 50%;
+    }
+  }
+
+  &.top {
+    @extend .bs-popover-top;
+  }
+
+  &.bottom {
+    @extend .bs-popover-bottom;
+  }
+
+  &.left {
+    @extend .bs-popover-left;
+    margin-left: -$popover-arrow-width;
+  }
+
+  &.right {
+    @extend .bs-popover-right;
+    margin-right: -$popover-arrow-width;
+  }
+}
+
+// BS4 -> BS3 class mappings for react-bootstrap
+.tooltip {
+  .tooltip-inner {
+    @extend %popover-panel;
+    padding: $popover-header-padding-y $popover-header-padding-x;
+  }
+
+  .tooltip-arrow {
+    @extend .arrow;
+  }
+
+  &.top,
+  &.right,
+  &.bottom,
+  &.left {
+    padding: 0;
+  }
+
+  &.top {
+    @extend .bs-tooltip-top;
+    margin-top: -$tooltip-arrow-height;
+
+    .arrow {
+      bottom: -$tooltip-arrow-height;
+      margin-left: -($tooltip-arrow-width / 2);
+    }
+  }
+
+  &.right {
+    @extend .bs-tooltip-right;
+    margin-left: $tooltip-arrow-height;
+
+    .arrow {
+      left: -$tooltip-arrow-height;
+      margin-top: -($tooltip-arrow-width / 2);
+    }
+  }
+
+  &.bottom {
+    @extend .bs-tooltip-bottom;
+    margin-top: $tooltip-arrow-height;
+
+    .arrow {
+      top: -$tooltip-arrow-height;
+      margin-left: -($tooltip-arrow-width / 2);
+    }
+  }
+
+  &.left {
+    @extend .bs-tooltip-left;
+    margin-left: -$tooltip-arrow-height;
+
+    .arrow {
+      right: -$tooltip-arrow-height;
+      margin-top: -($tooltip-arrow-width / 2);
+    }
+  }
+}

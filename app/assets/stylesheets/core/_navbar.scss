@@ -1,0 +1,22 @@
+.navbar {
+  .navbar-collapse {
+    &.collapsing,
+    &.in,
+    &.show {
+      display: block;
+      text-align: center;
+    }
+  }
+
+  &.navbar-dark .navbar-nav .nav-link {
+    font-style: italic;
+  }
+
+  &.navbar-light .navbar-nav .nav-link {
+    &:hover,
+    &:active,
+    &:focus {
+      color: $primary;
+    }
+  }
+}

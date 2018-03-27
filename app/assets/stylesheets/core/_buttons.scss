@@ -1,0 +1,83 @@
+// React Bootstrap may still generate '.btn-xs' (removed in BS4)
+.btn-xs {
+  @extend .btn-sm;
+}
+
+.btn {
+  &:not(:disabled):hover,
+  &:not(.disabled):hover {
+    cursor: pointer;
+  }
+
+  &.disabled,
+  &:disabled {
+    opacity: .4;
+    pointer-events: none;
+  }
+
+  // separate icon from label (within button)
+  &:not(.btn-extend) .fa {
+    &:first-child {
+      margin-right: $spacer / 3;
+    }
+
+    &:last-child {
+      margin-left: $spacer / 3;
+    }
+
+    &:first-child:last-child {
+      margin: 0;
+    }
+  }
+}
+
+// new button class: matching checkbox toggle buttons with other inputs
+.btn-input {
+  @include button-variant($input-bg, $input-border-color, $white, $input-border-color, $white, $input-focus-border-color);
+
+  // duplicate bootstrap '.form-control:active' styles
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled).active {
+    color: $input-focus-color;
+    background-color: $input-focus-bg;
+    border-color: $input-focus-border-color;
+    outline: 0;
+
+    @if $enable-shadows {
+      box-shadow: $input-box-shadow, $input-focus-box-shadow;
+    } @else {
+      box-shadow: $input-focus-box-shadow;
+    }
+  }
+}
+
+// new button class: icon buttons that extend to show text
+.btn-extend {
+  overflow: hidden;
+
+  .fa {
+    display: inline-block;
+    margin-right: 0;
+    min-width: 1em;
+    transition: margin .4s;
+
+    + span {
+      opacity: 0;
+      max-width: 0;
+      display: inline-block;
+      transition: max-width .3s ease-out, opacity .3s ease-in;
+    }
+  }
+
+  &:not(.disabled):not(:disabled):hover,
+  .btn-group:not(.disabled):not(:disabled) &:hover {
+    .fa {
+      margin-right: $spacer / 3;
+
+      + span {
+        max-width: 150px;
+        opacity: 1;
+      }
+    }
+  }
+}

@@ -1,0 +1,199 @@
+%table-bookend {
+  > tr > th,
+  > tr > td {
+    background-color: $gray-400;
+    border: 0;
+    color: $input-color;
+    white-space: nowrap;
+  }
+}
+
+.table > thead {
+  @extend %table-bookend;
+  border-bottom: $table-border-width solid $gray-500;
+  box-shadow: $shadow-sm, $shadow-sm;
+
+  > tr > th,
+  > tr > td {
+    font-weight: normal;
+  }
+
+  // styles for not-last-row of a multi-row table-header
+  > tr:not(:last-child) > th {
+    border-bottom: $table-border-width dashed rgba($gray-200, .5);
+    color: $white;
+    font-size: .9em;
+    font-style: italic;
+    font-weight: normal;
+    padding-bottom: $table-cell-padding-sm;
+    text-transform: uppercase;
+  }
+
+  .table-header--sortable {
+    cursor: pointer;
+  }
+
+  .order {
+    margin-left: $spacer / 3;
+    display: inline-block;
+
+    @include media-breakpoint-down(md) {
+      display: none;
+    }
+
+    a:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+.table > tbody {
+  th,
+  td {
+    border-top-width: $table-border-width * 2;
+    font-family: $font-family-monospace;
+    font-size: $font-size-sm;
+
+    .btn {
+      @extend .btn-sm;
+    }
+
+    .enum-select__button {
+      @extend .btn-success;
+    }
+
+    // offsets the padding around inputs/buttons in table cells
+    $cell-padding-offset: -(($input-btn-line-height * $font-size-base) / 3);
+
+    > .btn,
+    > .form-control,
+    > .cell-padding-offset {
+      margin-top: $cell-padding-offset;
+      margin-bottom: $cell-padding-offset;
+    }
+
+    > .form-group,
+    > .input-group,
+    > .btn-group {
+      display: flex;
+      margin-top: $cell-padding-offset;
+      margin-bottom: $cell-padding-offset;
+    }
+  }
+
+  > tr:first-child {
+    th,
+    td {
+      border-top: 0;
+    }
+  }
+
+  a {
+    text-decoration: underline;
+  }
+}
+
+.table > tfoot {
+  @extend %table-bookend;
+  border-top: $table-border-width solid $card-border-color;
+  font-weight: bold;
+
+  > tr > th,
+  > tr > td {
+    background-color: $info;
+    color: $white;
+  }
+}
+
+// min width on react-selects, or they collapse with the column
+.enum-select-wrapper {
+  min-width: 140px;
+}
+
+// row groups
+.row-group-table {
+  tbody td {
+    vertical-align: middle;
+
+    &[rowspan]:not([rowspan='1']) {
+      position: relative;
+
+      // ie fix
+      @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+        border-left: 1px solid $table-border-color;
+        border-right: 1px solid $table-border-color;
+      }
+
+      &::before {
+        border-radius: $border-radius-lg;
+        border: $table-border-width solid $table-border-color;
+        bottom: $table-cell-padding;
+        content: '';
+        left: $table-cell-padding / 2;
+        pointer-events: none;
+        position: absolute;
+        right: $table-cell-padding / 2;
+        top: $table-cell-padding;
+
+        // ie fix
+        @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+          display: none;
+        }
+      }
+    }
+  }
+
+  tbody tr:not(.row-group) td {
+    border-top-width: $table-border-width;
+  }
+
+  .even-row {
+    background-color: $table-accent-bg;
+  }
+}
+
+// avoid card border causing a blurry edge appearance against the gray thead
+// scss-lint:disable SelectorDepth
+.card {
+  > .table {
+    margin-bottom: 0;
+    margin-top: -$card-border-width;
+
+    > thead > tr:first-child {
+      > th:first-child {
+        border-top-left-radius: $card-border-radius;
+      }
+
+      > th:last-child {
+        border-top-right-radius: $card-border-radius;
+      }
+    }
+
+    > tfoot > tr:last-child {
+      > th:first-child,
+      > td:first-child {
+        border-bottom-left-radius: $card-border-radius;
+      }
+
+      > th:last-child,
+      > td:last-child {
+        border-bottom-right-radius: $card-border-radius;
+      }
+    }
+  }
+
+  .card-header {
+    + .table,
+    + .table-responsive > .table,
+    + script ~ [id*='react-component'] .table {
+      margin-top: 0;
+
+      > thead > tr:first-child > th:first-child,
+      > thead > tr:first-child > th:last-child {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+      }
+    }
+  }
+}
+// scss-lint:enable SelectorDepth

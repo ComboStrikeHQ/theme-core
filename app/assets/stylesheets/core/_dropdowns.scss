@@ -1,0 +1,61 @@
+%dropdown-menu {
+  @extend %popover-panel;
+  margin-top: $spacer / 3;
+  margin-bottom: $spacer / 3;
+
+  // for for BS3 style dropdowns (React Bootstrap)
+  > li:not(.dropdown-item) > a {
+    @extend .dropdown-item;
+  }
+
+  // for for BS3 style dropdowns (React Bootstrap)
+  // '.open' = BS3, '.show' = BS4
+  .dropdown.open > &,
+  .dropup.open > & {
+    display: block;
+  }
+
+  // for conflict between BS3 and BS4 style dropdowns (React Bootstrap)
+  // BS4 uses 'data-toggle=dropdown'
+  .dropdown-toggle:not([data-toggle='dropdown']) + &.dropdown-menu-right {
+    right: 0;
+    left: auto;
+  }
+
+  .dropup .dropdown-toggle:not([data-toggle='dropdown']) + & {
+    top: auto;
+    bottom: 100%;
+  }
+}
+
+.dropdown-menu {
+  @extend %dropdown-menu;
+}
+
+// autosuggest
+.react-autosuggest__container {
+  position: relative;
+
+  > .react-autosuggest__suggestions-container {
+    @extend .dropdown-menu;
+    width: 100%;
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      li {
+        @extend .dropdown-item;
+        @extend .overflow-ellipsis;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.react-autosuggest__container--open {
+  > .react-autosuggest__suggestions-container {
+    @extend .show;
+  }
+}

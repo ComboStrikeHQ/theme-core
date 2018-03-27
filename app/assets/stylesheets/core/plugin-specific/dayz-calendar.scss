@@ -1,0 +1,41 @@
+.dayz {
+  &.month .days {
+    border: 1px solid $table-border-color;
+    border-width: 1px 0 0 1px;
+    border-radius: $border-radius-lg;
+    overflow: hidden;
+
+    .day {
+      border: 1px solid $table-border-color;
+      border-width: 0 1px 1px 0;
+      min-height: auto;
+      padding-bottom: $spacer;
+
+      .label {
+        color: rgba($body-color, .6);
+        margin: $spacer / 4;
+      }
+
+      .event {
+        font-size: $font-size-sm;
+        line-height: $line-height-sm;
+
+        &.span-1 {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .x-labels {
+    margin-bottom: $spacer;
+
+    .day-label {
+      width: calc(100% / 7); // 7 days/columns in the week
+    }
+  }
+
+  .event {
+    border: 0;
+  }
+}

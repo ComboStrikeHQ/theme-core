@@ -1,0 +1,160 @@
+%form-control-focus {
+  background-color: $input-focus-bg;
+  border-color: $input-focus-border-color;
+  color: $input-focus-color;
+  outline: none;
+
+  @if $enable-shadows {
+    box-shadow: $input-box-shadow, $input-btn-focus-box-shadow;
+  } @else {
+    box-shadow: $input-btn-focus-box-shadow;
+  }
+}
+
+// scss-lint:disable SelectorFormat SelectorDepth
+.Select {
+  display: flex;
+  flex: 1 1 auto;
+
+  &:not(.is-focused):not(.is-open):hover {
+    > .Select-control {
+      background-color: $input-focus-bg;
+      box-shadow: none;
+    }
+  }
+
+  &.is-focused,
+  &.is-open {
+    > .Select-control {
+      @extend %form-control-focus;
+    }
+  }
+
+  > .Select-control {
+    @include transition($input-transition);
+    align-items: center;
+    background-color: $input-bg;
+    border-radius: $input-border-radius;
+    border: $input-btn-border-width solid $input-border-color;
+    display: flex;
+    font-size: $font-size-base;
+    height: auto;
+    line-height: $input-btn-line-height;
+    min-height: $input-height;
+
+    .Select-multi-value-wrapper {
+      width: 100%;
+
+      .Select-value {
+        line-height: $input-btn-line-height;
+        margin-top: $input-btn-padding-y;
+        white-space: nowrap;
+
+        .Select-value-icon,
+        .Select-value-label {
+          padding-bottom: 0;
+          padding-top: 0;
+          vertical-align: top;
+        }
+      }
+
+      .Select-input,
+      .Select-input > input {
+        height: $input-height-inner;
+        line-height: $input-height-inner;
+        padding-bottom: 0;
+        padding-top: 0;
+        // prevent React Select inputs collapsing width
+        min-width: 80px; // is there a beter way to fix this?
+        max-width: 100%;
+
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+  }
+
+  .Select-placeholder,
+  &.Select--single > .Select-control .Select-value {
+    padding-left: $input-btn-padding-x;
+    padding-right: $input-btn-padding-x;
+  }
+
+  &.Select--single > .Select-control .Select-value {
+    color: $input-color;
+  }
+
+  > .Select-menu-outer {
+    @extend %dropdown-menu;
+    left: 0; // fix for IE
+    overflow-y: auto;
+    z-index: $zindex-dropdown;
+  }
+
+  + .input-group-append {
+    margin-left: -$input-border-radius;
+    position: relative;
+  }
+}
+
+.input-group-lg > .Select {
+  > .Select-control {
+    border-radius: $input-border-radius-lg;
+    font-size: $font-size-lg;
+    line-height: $input-btn-line-height-lg;
+    min-height: $input-height-lg;
+
+    .Select-value {
+      line-height: $input-btn-line-height-lg;
+      margin-top: $input-btn-padding-y-lg;
+    }
+
+    .Select-input,
+    .Select-input > input {
+      height: $input-height-inner-lg;
+      line-height: $input-height-inner-lg;
+    }
+  }
+
+  .Select-placeholder,
+  &.Select--single > .Select-control .Select-value {
+    padding-left: $input-btn-padding-x-lg;
+    padding-right: $input-btn-padding-x-lg;
+  }
+
+  + .input-group-append {
+    margin-left: -$input-border-radius-lg;
+  }
+}
+
+.input-group-sm > .Select {
+  > .Select-control {
+    border-radius: $input-border-radius-sm;
+    font-size: $font-size-sm;
+    line-height: $input-btn-line-height-sm;
+    min-height: $input-height-sm;
+
+    .Select-value {
+      line-height: $input-btn-line-height-sm;
+      margin-top: $input-btn-padding-y-sm;
+    }
+
+    .Select-input,
+    .Select-input > input {
+      height: $input-height-inner-sm;
+      line-height: $input-height-inner-sm;
+    }
+  }
+
+  .Select-placeholder,
+  &.Select--single > .Select-control .Select-value {
+    padding-left: $input-btn-padding-x-sm;
+    padding-right: $input-btn-padding-x-sm;
+  }
+
+  + .input-group-append {
+    margin-left: -$input-border-radius-sm;
+  }
+}
+// scss-lint:enable SelectorFormat SelectorDepth

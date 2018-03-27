@@ -1,0 +1,16 @@
+// fix BS3 formatted nav-items
+.nav-item {
+  > a {
+    @extend .nav-link;
+  }
+
+  &.active > a {
+    @extend .active;
+  }
+
+  &.disabled > a {
+    color: $nav-link-disabled-color;
+    pointer-events: none;
+    cursor: default;
+  }
+}

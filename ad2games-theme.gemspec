@@ -3,13 +3,13 @@
 $LOAD_PATH.push File.expand_path('../lib', __FILE__)
 
 Gem::Specification.new do |s|
-  s.name      = 'ad2games-theme'
-  s.version   = 0.78
+  s.name      = 'theme-core'
+  s.version   = 0.1
   s.platform  = Gem::Platform::RUBY
   s.authors   = ['ad2games']
   s.email     = ['developers@ad2games.com']
   s.homepage  = 'http://www.ad2games.com'
-  s.summary   = 'UI theme for ad2games projects'
+  s.summary   = 'base UI theme for Bootstrap 4 projects'
 
   s.files     = `git ls-files`.split("\n")
   s.require_paths = %w[lib assets fonts]

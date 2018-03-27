@@ -1,0 +1,87 @@
+.owl-carousel {
+  .owl-item {
+    padding: ($spacer / 4) 0 $spacer;
+  }
+
+  &.owl-theme {
+    .owl-dots {
+      margin-top: $spacer;
+      text-align: center;
+
+      .owl-dot {
+        cursor: pointer;
+        display: inline-block;
+
+        span {
+          background: $gray-200;
+          border-radius: 30px;
+          display: block;
+          height: 10px;
+          margin: ($spacer / 2) $spacer;
+          transition: opacity 200ms ease;
+          width: 10px;
+        }
+
+        &.active span {
+          background: $primary;
+        }
+
+        &:hover span {
+          background: $gray;
+        }
+      }
+    }
+
+    .owl-nav.disabled,
+    .owl-prev.disabled,
+    .owl-next.disabled {
+      display: none;
+    }
+
+    .owl-prev,
+    .owl-next {
+      background-color: transparent;
+      cursor: pointer;
+      height: 25%;
+      position: absolute;
+      top: 25%;
+      transition: background-color .4s ease-out;
+      width: $spacer * 3;
+
+      &:hover {
+        background-color: rgba($white, .8);
+
+        > i {
+          font-size: 5em;
+        }
+      }
+
+      > i {
+        font-size: 4em;
+        line-height: 30px;
+        margin-top: -15px;
+        position: absolute;
+        top: 50%;
+        transition: font-size .2s ease-out;
+      }
+    }
+
+    .owl-prev {
+      border-radius: 0 $card-border-radius $card-border-radius 0;
+      right: calc(100% + #{$spacer});
+
+      > i {
+        left: $spacer / 2;
+      }
+    }
+
+    .owl-next {
+      border-radius: $card-border-radius 0 0 $card-border-radius;
+      left: calc(100% + #{$spacer});
+
+      > i {
+        right: $spacer / 2;
+      }
+    }
+  }
+}

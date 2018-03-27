@@ -1,0 +1,154 @@
+// fix React Bootstrap generates incorrect markup (BS3 -> BS4)
+.input-group-addon {
+  @extend .input-group-text;
+}
+
+.input-group-btn,
+.input-group-addon {
+  &:first-child {
+    @extend .input-group-prepend;
+  }
+
+  &:last-child {
+    @extend .input-group-append;
+  }
+}
+
+// scss-lint:disable QualifyingElement
+// fix React Bootstrap doesn't allow class directly on checkbox input
+.form-check > .form-check-label > input[type='checkbox'] {
+  @extend .form-check-input;
+}
+
+// add icon to button-styled checkboxes
+.btn-group-toggle label.btn,
+label.btn[class*='checkbox'] {
+  &::before {
+    content: '\f204';
+    font-family: FontAwesome;
+    margin-right: $spacer / 3;
+    font-size: $font-size-sm;
+  }
+
+  &.active::before {
+    content: '\f205';
+  }
+
+  > input[type='checkbox'] {
+    clip: rect(0, 0, 0, 0);
+    pointer-events: none;
+    position: absolute;
+  }
+}
+
+.btn-group-toggle .form-check {
+  padding-left: 0;
+}
+// scss-lint:enable QualifyingElement
+
+textarea {
+  min-height: 6em;
+}
+
+.date-field {
+  position: relative;
+}
+
+.form-text {
+  font-size: $font-size-sm;
+  font-style: italic;
+}
+
+%help-block {
+  border-radius: 0 0 $border-radius-sm $border-radius-sm;
+  float: right;
+  font-family: $font-family-base;
+  font-size: .8em;
+  font-style: italic;
+  margin: 0 ($spacer / 2) ($spacer / 4);
+  padding: ($spacer / 5) ($spacer / 2);
+
+  .has-error &,
+  .has-danger & {
+    color: $danger;
+
+    .bg-gradient & {
+      color: $white;
+      background: $danger;
+      margin: 0 $spacer ($spacer / 4);
+    }
+  }
+
+  // avoid help/error text pushing up fields that are aligned to the bottom
+  .align-items-end & {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    right: 0;
+  }
+}
+
+.help-block,
+.form-control-feedback {
+  @extend %help-block;
+}
+
+.form-control {
+  &:not(.btn):not([readonly]):not(:disabled) {
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: $white;
+    }
+  }
+
+  &.has-error,
+  &.has-danger,
+  .has-error &,
+  .has-danger & {
+    @extend .border-danger;
+  }
+
+  &:disabled,
+  &[readonly] {
+    background-color: $input-bg;
+    border-color: lighten($input-border-color, 5%);
+    border-style: dashed;
+  }
+}
+
+// scss-lint:disable QualifyingElement
+input[type=number] {
+  -moz-appearance: textfield;
+
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+// hide auto-fill icon on safari
+// scss-lint:disable PseudoElement
+// https://github.com/brigade/scss-lint/pull/939
+input::-webkit-contacts-auto-fill-button {
+  opacity: 0;
+}
+// scss-lint:enable QualifyingElement PseudoElement
+
+// removes gray border from inputs when they are on a darker background
+@each $color, $value in $theme-colors {
+  @if $color != 'light' and $color != 'white' {
+    .bg-#{$color} {
+      @include form-border-color(transparent);
+    }
+  }
+}
+
+.textarea--full-height {
+  flex-grow: 1;
+
+  textarea {
+    height: 100%;
+  }
+}
