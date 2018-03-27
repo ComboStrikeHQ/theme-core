@@ -6,6 +6,7 @@ initial style layer over Bootstrap 4, before project-specific styles
 ```ruby
 gem 'theme-core', git: 'https://github.com/ad2games/theme-core'
 gem 'bootstrap', '~> 4.0.0'
+gem 'tether-rails'
 ```
 
 ###### stylesheets/application.scss
