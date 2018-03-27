@@ -5,14 +5,10 @@ initial style layer over Bootstrap 4, before project-specific styles
 ###### Gemfile
 ```ruby
 gem 'theme-core', git: 'https://github.com/ad2games/theme-core'
-gem 'bootstrap', '~> 4.0.0'
 ```
 
 ###### stylesheets/application.scss
 ```sass
-@import 'tether';                 // required by Bootstrap gem
-@import 'rails_bootstrap_forms';
-
 @import 'core_colors';            // from theme-core gem  - core color overrides of Bootstrap
 @import 'theme_colors';           // from project - project color overrides of theme-core
 @import 'core_variables';         // from theme-core gem  - core variables overrides of Bootstrap
@@ -22,7 +18,7 @@ gem 'bootstrap', '~> 4.0.0'
 @import 'bootstrap/variables';    // from Bootstrap gem - sets remaining default variables
 @import 'bootstrap/mixins';       // from Bootstrap gem
 
-// selection of bootstrap stuff
+// example selection of bootstrap stuff
 @import 'bootstrap/code';
 @import 'bootstrap/grid';
 @import 'bootstrap/tables';
@@ -31,9 +27,11 @@ gem 'bootstrap', '~> 4.0.0'
 @import 'bootstrap/utilities';
 // ...etc
 
-// third party plugins
+// example selection of third party plugins
+@import 'rails_bootstrap_forms';
 @import 'daterangepicker';
-@import 'font-awesome';
+@import "font-awesome-sprockets";
+@import "font-awesome";
 @import 'react-select';
 // ...etc
 

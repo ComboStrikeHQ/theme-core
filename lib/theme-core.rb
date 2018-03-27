@@ -2,3 +2,5 @@
 # frozen_string_literal: true
 
 require 'theme-core/engine'
+require 'jquery-rails'
+require 'bootstrap'
