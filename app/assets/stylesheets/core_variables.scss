@@ -1,10 +1,10 @@
 // CUSTOM VARIABLES
 
 // shadows
-$shadow-base:                       0 2px 4px -1px rgba($gray-600, .3);
-$shadow-sm:                         0 2px 1px -1px rgba($black, .1);
-$shadow-lg:                         0 4px 6px -2px rgba($gray-800, .3);
-$shadow-xl:                         0 6px 14px -3px rgba($gray-600, .2);
+$shadow-base:                       0 2px 4px -1px rgba($gray-600, .3) !default;
+$shadow-sm:                         0 2px 1px -1px rgba($black, .1) !default;
+$shadow-lg:                         0 4px 6px -2px rgba($gray-800, .3) !default;
+$shadow-xl:                         0 6px 14px -3px rgba($gray-600, .2) !default;
 
 // BOOTSTRAP 4 VARIABLES
 
@@ -33,86 +33,86 @@ $sizes: (
 
 $font-family-sans-serif:            -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
 $font-family-monospace:             'SFMono-Regular', Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
-$font-family-base:                  $font-family-sans-serif;
+$font-family-base:                  $font-family-sans-serif !default;
 
-$body-bg:                           $gray-100;
-$body-color:                        $gray-900;
-$text-muted:                        $gray;
+$body-bg:                           $gray-100 !default;
+$body-color:                        $gray-900 !default;
+$text-muted:                        $gray !default;
 
 // alerts
-$alert-border-radius:               0;
+$alert-border-radius:               0 !default;
 
 // border-radius
-$border-radius:                     .25rem;
-$border-radius-lg:                  .35rem;
-$border-radius-sm:                  .15rem;
+$border-radius:                     .25rem !default;
+$border-radius-lg:                  .35rem !default;
+$border-radius-sm:                  .15rem !default;
 
 // cards
-$card-border-radius:                $border-radius-lg;
-$card-border-color:                 rgba($black, .1);
+$card-border-radius:                $border-radius-lg !default;
+$card-border-color:                 rgba($black, .1) !default;
 
 // dropdowns
-$dropdown-border-color:             rgba($black, .05);
-$dropdown-border-radius:            $border-radius-lg;
+$dropdown-border-color:             rgba($black, .05) !default;
+$dropdown-border-radius:            $border-radius-lg !default;
 
 // fonts
-$font-size-base:                    1rem; // Assumes the browser default, typically `16px`
-$font-size-lg:                      ($font-size-base * 1.25);
-$font-size-sm:                      ($font-size-base * .875);
-$h1-font-size:                      $font-size-base * 1.8;
-$h2-font-size:                      $font-size-base * 1.6;
-$h3-font-size:                      $font-size-base * 1.5;
-$h4-font-size:                      $font-size-base * 1.4;
-$h5-font-size:                      $font-size-base * 1.2;
-$h6-font-size:                      $font-size-base;
-$font-weight-bold:                  600;
+$font-size-base:                    1rem !default; // Assumes the browser default, typically `16px`
+$font-size-lg:                      ($font-size-base * 1.25) !default;
+$font-size-sm:                      ($font-size-base * .875) !default;
+$h1-font-size:                      $font-size-base * 1.8 !default;
+$h2-font-size:                      $font-size-base * 1.6 !default;
+$h3-font-size:                      $font-size-base * 1.5 !default;
+$h4-font-size:                      $font-size-base * 1.4 !default;
+$h5-font-size:                      $font-size-base * 1.2 !default;
+$h6-font-size:                      $font-size-base !default;
+$font-weight-bold:                  600 !default;
 
 // forms
-$input-bg:                          $gray-100;
-$input-focus-bg:                    $white;
+$input-bg:                          $gray-100 !default;
+$input-focus-bg:                    $white !default;
 
 // navbar
-$navbar-dark-color:                 rgba($white, 1);
-$navbar-dark-hover-color:           rgba($white, .8);
-$navbar-dark-active-color:          rgba($white, 1);
-$navbar-dark-disabled-color:        rgba($white, .5);
-$navbar-dark-toggler-border-color:  rgba($white, .3);
+$navbar-dark-color:                 rgba($white, 1) !default;
+$navbar-dark-hover-color:           rgba($white, .8) !default;
+$navbar-dark-active-color:          rgba($white, 1) !default;
+$navbar-dark-disabled-color:        rgba($white, .5) !default;
+$navbar-dark-toggler-border-color:  rgba($white, .3) !default;
 
-$navbar-light-color:                rgba($black, .8);
-$navbar-light-hover-color:          rgba($black, 1);
-$navbar-light-active-color:         rgba($black, 1);
-$navbar-light-disabled-color:       rgba($black, .5);
-$navbar-light-toggler-border-color: rgba($black, .3);
+$navbar-light-color:                rgba($black, .8) !default;
+$navbar-light-hover-color:          rgba($black, 1) !default;
+$navbar-light-active-color:         rgba($black, 1) !default;
+$navbar-light-disabled-color:       rgba($black, .5) !default;
+$navbar-light-toggler-border-color: rgba($black, .3) !default;
 
-$navbar-toggler-font-size:          1rem;
+$navbar-toggler-font-size:          1rem !default;
 
 // nav-tabs
-$nav-tabs-link-hover-border-color:  transparent;
-$nav-tabs-link-active-color:        $gray-700;
-$nav-tabs-link-active-bg:           transparent;
-$nav-tabs-link-active-border-color: transparent;
+$nav-tabs-link-hover-border-color:  transparent !default;
+$nav-tabs-link-active-color:        $gray-700 !default;
+$nav-tabs-link-active-bg:           transparent !default;
+$nav-tabs-link-active-border-color: transparent !default;
 
 // pagination
-$pagination-color:                  $primary;
-$pagination-bg:                     transparent;
-$pagination-active-color:           $body-color;
-$pagination-active-bg:              #ddd;
-$pagination-active-border-color:    #ddd;
-$pagination-disabled-bg:            transparent;
+$pagination-color:                  $primary !default;
+$pagination-bg:                     transparent !default;
+$pagination-active-color:           $body-color !default;
+$pagination-active-bg:              #ddd !default;
+$pagination-active-border-color:    #ddd !default;
+$pagination-disabled-bg:            transparent !default;
 
 // popovers
-$popover-arrow-height:              .4rem;
-$popover-arrow-width:               .8rem;
-$popover-border-color:              $card-border-color;
-$popover-box-shadow:                $shadow-xl;
-$popover-padding:                   .5rem; // custom
-$popover-header-padding-x:          $popover-padding;
-$popover-header-padding-y:          $popover-padding;
+$popover-arrow-height:              .4rem !default;
+$popover-arrow-width:               .8rem !default;
+$popover-border-color:              $card-border-color !default;
+$popover-box-shadow:                $shadow-xl !default;
+$popover-padding:                   .5rem !default; // custom
+$popover-header-padding-x:          $popover-padding !default;
+$popover-header-padding-y:          $popover-padding !default;
 
 // tables
-$table-accent-bg:                   rgba($gray-400, .2);
-$table-border-color:                rgba($gray-400, .2);
+$table-accent-bg:                   rgba($gray-400, .2) !default;
+$table-border-color:                rgba($gray-400, .2) !default;
 
 // type
-$headings-font-weight:              bold;
-$line-height-base:                  1.2;
+$headings-font-weight:              bold !default;
+$line-height-base:                  1.2 !default;
