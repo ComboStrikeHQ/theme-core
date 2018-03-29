@@ -4,3 +4,4 @@
 require 'theme-core/engine'
 require 'jquery-rails'
 require 'bootstrap'
+require 'font-awesome-sass'

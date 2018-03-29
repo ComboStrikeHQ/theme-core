@@ -17,4 +17,5 @@ Gem::Specification.new do |s|
   s.add_dependency 'sass-rails'
   s.add_dependency 'jquery-rails'
   s.add_dependency 'bootstrap', '~> 4.0.0'
+  s.add_dependency 'font-awesome-sass'
 end

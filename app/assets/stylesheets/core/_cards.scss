@@ -1,21 +1,22 @@
 $nested-card-border-radius: ($spacer / 4);
 
-.card-header {
-  // filters
-  .btn-toolbar.form-row {
-    .form-group,
-    .input-group,
-    .btn,
-    .form-control {
-      margin-bottom: 0;
-    }
-
-    > .col {
-      padding-top: 5px;
-      padding-bottom: 5px;
-    }
+// filters
+.btn-toolbar {
+  .form-group,
+  .input-group,
+  .btn,
+  .form-control {
+    margin-bottom: 0;
   }
 
+  > .col,
+  > [class*='col-'] {
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+}
+
+.card-header {
   .form-inline .col-form-label {
     margin-right: $spacer / 3;
   }

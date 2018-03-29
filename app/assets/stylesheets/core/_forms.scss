@@ -21,11 +21,11 @@
 }
 
 // add icon to button-styled checkboxes
-.btn-group-toggle label.btn,
-label.btn[class*='checkbox'] {
+%btn-toggle {
   &::before {
     content: '\f204';
-    font-family: FontAwesome;
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
     margin-right: $spacer / 3;
     font-size: $font-size-sm;
   }
@@ -39,6 +39,12 @@ label.btn[class*='checkbox'] {
     pointer-events: none;
     position: absolute;
   }
+}
+
+.btn-toggle,
+.btn-group-toggle label.btn,
+label.btn[class*='checkbox'] {
+  @extend %btn-toggle;
 }
 
 .btn-group-toggle .form-check {
