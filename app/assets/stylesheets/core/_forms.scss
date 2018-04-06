@@ -61,7 +61,7 @@ textarea {
 }
 
 .form-text {
-  font-size: $font-size-sm;
+  @extend .small;
   font-style: italic;
 }
 
