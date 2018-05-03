@@ -68,7 +68,7 @@ $h6-font-size:                      $font-size-base !default;
 $font-weight-bold:                  600 !default;
 
 // forms
-$input-bg:                          $gray-100 !default;
+$input-bg:                          rgba($gray-100, .8) !default;
 $input-focus-bg:                    $white !default;
 
 // navbar

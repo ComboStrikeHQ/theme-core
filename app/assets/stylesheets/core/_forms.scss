@@ -65,46 +65,18 @@ textarea {
   font-style: italic;
 }
 
-%help-block {
-  border-radius: 0 0 $border-radius-sm $border-radius-sm;
-  float: right;
-  font-family: $font-family-base;
-  font-size: .8em;
-  font-style: italic;
-  margin: 0 ($spacer / 2) ($spacer / 4);
-  padding: ($spacer / 5) ($spacer / 2);
-
-  .has-error &,
-  .has-danger & {
-    color: $danger;
-
-    .bg-gradient & {
-      color: $white;
-      background: $danger;
-      margin: 0 $spacer ($spacer / 4);
-    }
-  }
-
-  // avoid help/error text pushing up fields that are aligned to the bottom
-  .align-items-end & {
-    margin: 0;
-    padding: 0;
-    position: absolute;
-    right: 0;
-  }
-}
-
-.help-block,
-.form-control-feedback {
-  @extend %help-block;
-}
-
 .form-control {
   &:not(.btn):not([readonly]):not(:disabled) {
     &:hover,
     &:focus,
     &:active {
-      background-color: $white;
+      background-color: $input-focus-bg;
+    }
+
+    &[disabled]:focus,
+    &[readonly]:focus {
+      box-shadow: none;
+      cursor: default;
     }
   }
 
@@ -157,4 +129,91 @@ input::-webkit-contacts-auto-fill-button {
   textarea {
     height: 100%;
   }
+}
+
+// fix square edges after label
+label + .form-control:not(:first-child) {
+  .form-group > &,
+  .input-group > & {
+    border-top-left-radius: $input-border-radius;
+    border-bottom-left-radius: $input-border-radius;
+  }
+
+  .input-group-lg > &,
+  .form-group-lg > & {
+    border-top-left-radius: $input-border-radius-lg;
+    border-bottom-left-radius: $input-border-radius-lg;
+  }
+
+  .input-group-sm > &,
+  .form-group-sm > & {
+    border-top-left-radius: $input-border-radius-sm;
+    border-bottom-left-radius: $input-border-radius-sm;
+  }
+}
+
+// help-text, errors, validation
+
+// ensure help-text doesn't squash to the side of input
+.form-group,
+.input-group {
+  flex-wrap: wrap;
+
+  .form-text {
+    width: 100%;
+  }
+}
+
+%invalid-control {
+  border-color: $form-feedback-invalid-color;
+
+  &:focus,
+  .is-open & {
+    border-color: $form-feedback-invalid-color;
+    box-shadow: 0 0 0 $input-focus-width rgba($form-feedback-invalid-color, .25);
+  }
+}
+
+// scss-lint:disable SelectorFormat
+.form-control,
+.Select-control,
+.btn-input {
+  .form-group.is-invalid & {
+    @extend %invalid-control;
+  }
+}
+// scss-lint:enable SelectorFormat
+
+%help-block {
+  border-radius: 0 0 $border-radius-sm $border-radius-sm;
+  float: right;
+  font-family: $font-family-base;
+  font-size: .8em;
+  font-style: italic;
+  margin: 0 ($spacer / 2) ($spacer / 4);
+  padding: ($spacer / 5) ($spacer / 2);
+
+  .has-error &,
+  .has-danger & {
+    color: $danger;
+
+    .bg-gradient & {
+      color: $white;
+      background: $danger;
+      margin: 0 $spacer ($spacer / 4);
+    }
+  }
+
+  // avoid help/error text pushing up fields that are aligned to the bottom
+  .align-items-end & {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    right: 0;
+  }
+}
+
+.help-block,
+.form-control-feedback {
+  @extend %help-block;
 }

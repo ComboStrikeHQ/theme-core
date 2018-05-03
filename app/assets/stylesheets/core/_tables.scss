@@ -1,16 +1,16 @@
 %table-bookend {
   > tr > th,
   > tr > td {
-    background-color: $gray-400;
+    background-color: $table-head-bg;
     border: 0;
-    color: $input-color;
+    color: rgba(color-yiq($table-head-bg), .8);
     white-space: nowrap;
   }
 }
 
 .table > thead {
   @extend %table-bookend;
-  border-bottom: $table-border-width solid $gray-500;
+  border-bottom: $table-border-width solid darken($table-head-bg, 10%);
   box-shadow: $shadow-sm, $shadow-sm;
 
   > tr > th,
@@ -50,7 +50,6 @@
 .table > tbody {
   th,
   td {
-    border-top-width: $table-border-width * 2;
     font-family: $font-family-monospace;
     font-size: $font-size-sm;
 
