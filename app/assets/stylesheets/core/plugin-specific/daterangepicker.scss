@@ -103,6 +103,16 @@ $calendar-border: 1px solid $light;
 
 .DayPicker-Month {
   margin: 0;
+
+  + .DayPicker-Month {
+    margin-left: $spacer;
+  }
+}
+
+.DayPicker-Months {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .daterangepicker {
