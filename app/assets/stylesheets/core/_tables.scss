@@ -1,41 +1,92 @@
+// scss-lint:disable SelectorDepth
+
 %table-bookend {
-  > tr > th,
-  > tr > td {
+  th,
+  td {
     background-color: $table-head-bg;
     border: 0;
     color: rgba(color-yiq($table-head-bg), .8);
+    vertical-align: bottom;
     white-space: nowrap;
   }
 }
 
 .table {
   font-size: $font-size-sm;
-}
 
-.table > thead {
-  @extend %table-bookend;
-  border-bottom: $table-border-width solid darken($table-head-bg, 10%);
-  box-shadow: $shadow-sm, $shadow-sm;
-
-  > tr > th,
-  > tr > td {
+  th,
+  td {
+    border-top: $table-border-width solid $table-border-color;
     font-weight: normal;
+    padding: $table-cell-padding;
+
+    tr:first-child & {
+      border-top: 0;
+    }
   }
 
-  // styles for not-last-row of a multi-row table-header
-  > tr:not(:last-child) > th {
-    border-bottom: $table-border-width dashed rgba(color-yiq($table-head-bg), .1);
-    color: rgba(color-yiq($table-head-bg), .6);
-    font-size: .8em;
-    font-style: italic;
-    font-weight: normal;
-    padding-bottom: $table-cell-padding-sm;
-    text-transform: uppercase;
+  td {
+    font-family: $font-family-monospace;
+    vertical-align: top;
+
+    .btn {
+      @extend .btn-sm;
+    }
+
+    // offsets the padding around inputs/buttons in table cells
+    $cell-padding-offset: -(($input-btn-line-height * $font-size-base) / 3);
+
+    > .btn,
+    > .form-control,
+    > .cell-padding-offset {
+      margin-bottom: $cell-padding-offset;
+      margin-top: $cell-padding-offset;
+    }
+
+    > .form-group,
+    > .input-group,
+    > .btn-group {
+      display: flex;
+      margin-bottom: $cell-padding-offset;
+      margin-top: $cell-padding-offset;
+    }
   }
 
-  // styles for not-first-row of a multi-row table-header
-  > tr + tr > th {
-    padding-top: $table-cell-padding-sm;
+  thead,
+  tfoot {
+    @extend %table-bookend;
+  }
+
+  thead {
+    border-bottom: $table-border-width solid darken($table-head-bg, 10%);
+    box-shadow: $shadow-sm, $shadow-sm;
+
+    // styles for not-last-row of a multi-row table-header
+    tr:not(:last-child) th {
+      border-bottom: $table-border-width dashed rgba(color-yiq($table-head-bg), .1);
+      color: rgba(color-yiq($table-head-bg), .6);
+      font-size: .8em;
+      font-style: italic;
+      font-weight: normal;
+      padding-bottom: $table-cell-padding-sm;
+      text-transform: uppercase;
+    }
+
+    // styles for not-first-row of a multi-row table-header
+    tr + tr th {
+      padding-top: $table-cell-padding-sm;
+    }
+  }
+
+  tfoot {
+    border-top: $table-border-width solid $card-border-color;
+    font-weight: bold;
+
+    th,
+    td {
+      background-color: $info;
+      color: $white;
+    }
   }
 
   .table-header--sortable {
@@ -43,8 +94,8 @@
   }
 
   .order {
-    margin-left: $spacer / 3;
     display: inline-block;
+    margin-left: $spacer / 3;
 
     @include media-breakpoint-down(md) {
       display: none;
@@ -56,70 +107,9 @@
   }
 }
 
-.table > tbody {
-  th,
-  td {
-    font-family: $font-family-monospace;
-
-    .btn {
-      @extend .btn-sm;
-    }
-
-    .enum-select__button {
-      @extend .btn-success;
-    }
-
-    // offsets the padding around inputs/buttons in table cells
-    $cell-padding-offset: -(($input-btn-line-height * $font-size-base) / 3);
-
-    > .btn,
-    > .form-control,
-    > .cell-padding-offset {
-      margin-top: $cell-padding-offset;
-      margin-bottom: $cell-padding-offset;
-    }
-
-    > .form-group,
-    > .input-group,
-    > .btn-group {
-      display: flex;
-      margin-top: $cell-padding-offset;
-      margin-bottom: $cell-padding-offset;
-    }
-  }
-
-  > tr:first-child {
-    th,
-    td {
-      border-top: 0;
-    }
-  }
-
-  a {
-    text-decoration: underline;
-  }
-}
-
-.table > tfoot {
-  @extend %table-bookend;
-  border-top: $table-border-width solid $card-border-color;
-  font-weight: bold;
-
-  > tr > th,
-  > tr > td {
-    background-color: $info;
-    color: $white;
-  }
-}
-
-// min width on react-selects, or they collapse with the column
-.enum-select-wrapper {
-  min-width: 140px;
-}
-
 // row groups
 .row-group-table {
-  tbody td {
+  td {
     vertical-align: middle;
 
     &[rowspan]:not([rowspan='1']) {
@@ -131,9 +121,10 @@
         border-right: 1px solid $table-border-color;
       }
 
+      // scss-lint:disable NestingDepth
       &::before {
-        border-radius: $border-radius-lg;
         border: $table-border-width solid $table-border-color;
+        border-radius: $border-radius-lg;
         bottom: $table-cell-padding;
         content: '';
         left: $table-cell-padding / 2;
@@ -147,11 +138,8 @@
           display: none;
         }
       }
+      // scss-lint:enable NestingDepth
     }
-  }
-
-  tbody tr:not(.row-group) td {
-    border-top-width: $table-border-width;
   }
 
   .even-row {
@@ -160,47 +148,65 @@
 }
 
 // avoid card border causing a blurry edge appearance against the gray thead
-// scss-lint:disable SelectorDepth
-.card {
-  > .table {
-    margin-bottom: 0;
-    margin-top: -$card-border-width;
+.card .table {
+  margin: 0;
 
-    > thead > tr:first-child {
-      > th:first-child {
-        border-top-left-radius: $card-border-radius;
-      }
-
-      > th:last-child {
-        border-top-right-radius: $card-border-radius;
-      }
+  // full-size tables in cards, including border-radius
+  thead tr:first-child {
+    th:first-child {
+      border-top-left-radius: $card-border-radius;
     }
 
-    > tfoot > tr:last-child {
-      > th:first-child,
-      > td:first-child {
-        border-bottom-left-radius: $card-border-radius;
-      }
-
-      > th:last-child,
-      > td:last-child {
-        border-bottom-right-radius: $card-border-radius;
-      }
+    th:last-child {
+      border-top-right-radius: $card-border-radius;
     }
   }
 
-  .card-header {
-    + .table,
-    + .table-responsive > .table,
-    + script ~ [id*='react-component'] .table {
-      margin-top: 0;
+  tfoot tr:last-child {
+    th:first-child,
+    td:first-child {
+      border-bottom-left-radius: $card-border-radius;
+    }
 
-      > thead > tr:first-child > th:first-child,
-      > thead > tr:first-child > th:last-child {
-        border-top-left-radius: 0;
-        border-top-right-radius: 0;
-      }
+    th:last-child,
+    td:last-child {
+      border-bottom-right-radius: $card-border-radius;
     }
   }
 }
-// scss-lint:enable SelectorDepth
+
+// squared-off tables when not full-size in card
+.card-body .table {
+  margin-bottom: $spacer;
+
+  thead tr:first-child {
+    th:first-child,
+    th:last-child {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+  }
+
+  tfoot tr:first-child {
+    th:first-child,
+    th:last-child,
+    td:first-child,
+    td:last-child {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+}
+
+// tables coming right after card-header
+.card-header {
+  + .table,
+  + .table-responsive > .table,
+  + script ~ [id*='react-component'] .table {
+    > thead > tr:first-child > th:first-child,
+    > thead > tr:first-child > th:last-child {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+  }
+}

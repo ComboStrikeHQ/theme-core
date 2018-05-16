@@ -1,3 +1,5 @@
+// scss-lint:disable PseudoElement QualifyingElement SelectorFormat
+
 // fix React Bootstrap generates incorrect markup (BS3 -> BS4)
 .input-group-addon {
   @extend .input-group-text;
@@ -14,7 +16,6 @@
   }
 }
 
-// scss-lint:disable QualifyingElement
 // fix React Bootstrap doesn't allow class directly on checkbox input
 .form-check > .form-check-label > input[type='checkbox'] {
   @extend .form-check-input;
@@ -25,9 +26,9 @@
   &::before {
     content: '\f204';
     font-family: 'Font Awesome 5 Free';
+    font-size: $font-size-sm;
     font-weight: 900;
     margin-right: $spacer / 3;
-    font-size: $font-size-sm;
   }
 
   &.active::before {
@@ -50,7 +51,6 @@ label.btn[class*='checkbox'] {
 .btn-group-toggle .form-check {
   padding-left: 0;
 }
-// scss-lint:enable QualifyingElement
 
 textarea {
   min-height: 6em;
@@ -95,7 +95,6 @@ textarea {
   }
 }
 
-// scss-lint:disable QualifyingElement
 input[type=number] {
   -moz-appearance: textfield;
 
@@ -107,12 +106,10 @@ input[type=number] {
 }
 
 // hide auto-fill icon on safari
-// scss-lint:disable PseudoElement
 // https://github.com/brigade/scss-lint/pull/939
 input::-webkit-contacts-auto-fill-button {
   opacity: 0;
 }
-// scss-lint:enable QualifyingElement PseudoElement
 
 // removes gray border from inputs when they are on a darker background
 @each $color, $value in $theme-colors {
@@ -135,20 +132,20 @@ input::-webkit-contacts-auto-fill-button {
 label + .form-control:not(:first-child) {
   .form-group > &,
   .input-group > & {
-    border-top-left-radius: $input-border-radius;
     border-bottom-left-radius: $input-border-radius;
+    border-top-left-radius: $input-border-radius;
   }
 
   .input-group-lg > &,
   .form-group-lg > & {
-    border-top-left-radius: $input-border-radius-lg;
     border-bottom-left-radius: $input-border-radius-lg;
+    border-top-left-radius: $input-border-radius-lg;
   }
 
   .input-group-sm > &,
   .form-group-sm > & {
-    border-top-left-radius: $input-border-radius-sm;
     border-bottom-left-radius: $input-border-radius-sm;
+    border-top-left-radius: $input-border-radius-sm;
   }
 }
 
@@ -174,7 +171,6 @@ label + .form-control:not(:first-child) {
   }
 }
 
-// scss-lint:disable SelectorFormat
 .form-control,
 .Select-control,
 .btn-input {
@@ -183,7 +179,6 @@ label + .form-control:not(:first-child) {
     @extend %invalid-control;
   }
 }
-// scss-lint:enable SelectorFormat
 
 %help-block {
   border-radius: 0 0 $border-radius-sm $border-radius-sm;
@@ -199,8 +194,8 @@ label + .form-control:not(:first-child) {
     color: $danger;
 
     .bg-gradient & {
-      color: $white;
       background: $danger;
+      color: $white;
       margin: 0 $spacer ($spacer / 4);
     }
   }

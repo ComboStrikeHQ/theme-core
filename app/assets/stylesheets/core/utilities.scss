@@ -1,7 +1,7 @@
 .overflow-ellipsis {
-  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .nowrap {
@@ -23,9 +23,9 @@
 }
 
 .text--v-super {
-  vertical-align: super;
   font-size: .8em;
   margin: 0 ($spacer / 4);
+  vertical-align: super;
 }
 
 .w-1 {

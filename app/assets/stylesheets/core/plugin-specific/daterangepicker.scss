@@ -1,4 +1,5 @@
-// scss-lint:disable SelectorFormat QualifyingElement
+// scss-lint:disable NestingDepth QualifyingElement SelectorDepth SelectorFormat
+
 $calendar-border: 1px solid $light;
 
 .DayPicker-NavBar span {
@@ -7,32 +8,31 @@ $calendar-border: 1px solid $light;
 
 .DayPicker-NavBar span:hover .fas,
 .daterangepicker th.available:hover {
-  color: $primary;
   background-color: transparent;
+  color: $primary;
 }
 
 .DayPicker-Caption,
 .calendar-table thead th.month {
   font-family: $font-family-base;
   font-size: $font-size-base;
-  height: #{$line-height-lg + 'em'};
   font-weight: normal;
+  height: #{$line-height-lg + 'em'};
 }
 
 .calendar-table thead tr:last-child th,
 .DayPicker-Weekday {
-  padding: ($spacer / 2) ($spacer / 4);
-  font-size: $font-size-sm;
-  text-align: center;
-  font-weight: normal;
   color: $secondary;
+  font-size: $font-size-sm;
+  font-weight: normal;
+  padding: ($spacer / 2) ($spacer / 4);
+  text-align: center;
 
   abbr[title],
   abbr[data-original-title] {
-    font-size: $font-size-sm;
-    -webkit-text-decoration: none;
     border-bottom: 0;
     cursor: default;
+    font-size: $font-size-sm;
     text-decoration: none;
   }
 }
@@ -45,17 +45,17 @@ $calendar-border: 1px solid $light;
   &.start-date,
   &.end-date,
   &.start-date.end-date {
-    border-radius: 0;
     border: $calendar-border;
+    border-radius: 0;
     font-size: $font-size-sm;
     line-height: $line-height-base;
     padding: ($spacer / 3) ($spacer / 2);
 
     &:hover {
-      cursor: pointer;
-      color: $body-color;
-      border: $calendar-border;
       background-color: $light;
+      border: $calendar-border;
+      color: $body-color;
+      cursor: pointer;
     }
   }
 }
@@ -68,23 +68,23 @@ $calendar-border: 1px solid $light;
 
 .daterangepicker td.available.in-range,
 .daterangepicker td.available.in-range:hover {
-  color: $body-color;
   background-color: rgba($info, .1);
+  color: $body-color;
 }
 
 .daterangepicker td.off,
 .daterangepicker td.available.off,
 .DayPicker-Day.DayPicker-Day--outside {
+  border: $calendar-border;
+  color: $gray-400;
   font-style: italic;
   font-weight: 100;
-  color: $gray-400;
-  border: $calendar-border;
 
   &:hover {
-    cursor: pointer;
-    color: $body-color;
-    border: $calendar-border;
     background-color: $light;
+    border: $calendar-border;
+    color: $body-color;
+    cursor: pointer;
   }
 }
 
@@ -93,8 +93,8 @@ $calendar-border: 1px solid $light;
 .daterangepicker td.available.active,
 .daterangepicker td.available.active:hover,
 .DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside) {
-  color: $white;
   background-color: $info;
+  color: $white;
 }
 
 .DayPicker {
@@ -123,17 +123,17 @@ $calendar-border: 1px solid $light;
   }
 
   &::before {
-    top: -$popover-arrow-width;
-    border-right: $popover-arrow-width solid transparent;
-    border-left: $popover-arrow-width solid transparent;
     border-bottom: $popover-arrow-width solid rgba($black, .25); // match popovers
+    border-left: $popover-arrow-width solid transparent;
+    border-right: $popover-arrow-width solid transparent;
+    top: -$popover-arrow-width;
   }
 
   &::after {
-    top: calc((#{$popover-arrow-width} - #{$border-width}) * -1);
-    border-right: calc(#{$popover-arrow-width} - #{$border-width}) solid transparent;
     border-bottom: calc(#{$popover-arrow-width} - #{$border-width}) solid $white;
     border-left: calc(#{$popover-arrow-width} - #{$border-width}) solid transparent;
+    border-right: calc(#{$popover-arrow-width} - #{$border-width}) solid transparent;
+    top: calc((#{$popover-arrow-width} - #{$border-width}) * -1);
   }
 
   &.opensleft {
@@ -158,12 +158,11 @@ $calendar-border: 1px solid $light;
 
   .applyBtn,
   .cancelBtn {
-    width: 100%;
     margin-bottom: $spacer / 4;
+    width: 100%;
   }
 
   .cancelBtn {
     @extend .btn-outline-secondary;
   }
 }
-// scss-lint:enable SelectorFormat

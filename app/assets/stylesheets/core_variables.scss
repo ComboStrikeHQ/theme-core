@@ -31,8 +31,8 @@ $sizes: (
   100: 100%
 );
 
-$font-family-sans-serif:            -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
-$font-family-monospace:             'SFMono-Regular', Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
+$font-family-sans-serif:            -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol' !default;
+$font-family-monospace:             'SFMono-Regular', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace !default;
 $font-family-base:                  $font-family-sans-serif !default;
 
 $body-bg:                           $gray-100 !default;
@@ -111,7 +111,7 @@ $popover-header-padding-y:          $popover-padding !default;
 
 // tables
 $table-accent-bg:                   rgba($gray-400, .2) !default;
-$table-border-color:                rgba($gray-400, .2) !default;
+$table-border-color:                rgba($gray-400, .3) !default;
 
 // type
 $headings-font-weight:              bold !default;

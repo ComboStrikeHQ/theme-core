@@ -1,11 +1,34 @@
 %popover-panel {
-  box-shadow: $popover-box-shadow;
   border: $border-width solid $popover-border-color;
   border-radius: $border-radius-lg;
+  box-shadow: $popover-box-shadow;
+}
+
+%alert-in-popover {
+  .alert {
+    $alert-offset-x: calc(#{-$popover-body-padding-x} - #{$border-width});
+    $alert-offset-y: calc(#{-$popover-body-padding-y} - #{$border-width});
+
+    margin-left: $alert-offset-x;
+    margin-right: $alert-offset-x;
+
+    &:first-child {
+      border-top-left-radius: $border-radius-lg;
+      border-top-right-radius: $border-radius-lg;
+      margin-top: $alert-offset-y;
+    }
+
+    &:last-child {
+      border-bottom-left-radius: $border-radius-lg;
+      border-bottom-right-radius: $border-radius-lg;
+      margin-bottom: $alert-offset-y;
+    }
+  }
 }
 
 .popover {
   @extend %popover-panel;
+  @extend %alert-in-popover;
 
   .popover-title {
     @extend .popover-header;
@@ -23,26 +46,6 @@
 
     .v-divider {
       border-left: 1px dashed $gray-200;
-    }
-
-    .alert {
-      $alert-offset-x: calc(#{-$popover-body-padding-x} - #{$border-width});
-      $alert-offset-y: calc(#{-$popover-body-padding-y} - #{$border-width});
-
-      margin-left: $alert-offset-x;
-      margin-right: $alert-offset-x;
-
-      &:first-child {
-        border-top-left-radius: $border-radius-lg;
-        border-top-right-radius: $border-radius-lg;
-        margin-top: $alert-offset-y;
-      }
-
-      &:last-child {
-        border-bottom-left-radius: $border-radius-lg;
-        border-bottom-right-radius: $border-radius-lg;
-        margin-bottom: $alert-offset-y;
-      }
     }
   }
 
@@ -119,8 +122,8 @@
     margin-top: $tooltip-arrow-height;
 
     .arrow {
-      top: -$tooltip-arrow-height;
       margin-left: -($tooltip-arrow-width / 2);
+      top: -$tooltip-arrow-height;
     }
   }
 
@@ -129,8 +132,8 @@
     margin-left: -$tooltip-arrow-height;
 
     .arrow {
-      right: -$tooltip-arrow-height;
       margin-top: -($tooltip-arrow-width / 2);
+      right: -$tooltip-arrow-height;
     }
   }
 }

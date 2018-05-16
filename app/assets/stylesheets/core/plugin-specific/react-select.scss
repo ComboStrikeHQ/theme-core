@@ -1,3 +1,5 @@
+// scss-lint:disable NestingDepth QualifyingElement SelectorDepth SelectorFormat
+
 %form-control-focus {
   background-color: $input-focus-bg;
   border-color: $input-focus-border-color;
@@ -34,8 +36,8 @@
     @include transition($input-transition);
     align-items: center;
     background-color: $input-bg;
-    border-radius: $input-border-radius;
     border: $input-btn-border-width solid $input-border-color;
+    border-radius: $input-border-radius;
     display: flex;
     font-size: $font-size-base;
     height: auto;
@@ -62,11 +64,10 @@
       .Select-input > input {
         height: $input-height-inner;
         line-height: $input-height-inner;
+        max-width: 100%; // prevent React Select inputs collapsing width
+        min-width: 80px; // prevent React Select inputs collapsing width
         padding-bottom: 0;
         padding-top: 0;
-        // prevent React Select inputs collapsing width
-        min-width: 80px; // is there a beter way to fix this?
-        max-width: 100%;
 
         &:focus {
           outline: none;
@@ -157,4 +158,12 @@
     margin-left: -$input-border-radius-sm;
   }
 }
-// scss-lint:enable SelectorFormat SelectorDepth
+
+// min width on react-selects, or they collapse with the column
+.table td .enum-select-wrapper {
+  min-width: 140px;
+
+  .enum-select__button {
+    @extend .btn-success;
+  }
+}

@@ -1,3 +1,5 @@
+// scss-lint:disable NestingDepth
+
 // React Bootstrap may still generate '.btn-xs' (removed in BS4)
 .btn-xs {
   @extend .btn-sm;
@@ -39,9 +41,9 @@
   // duplicate bootstrap '.form-control:active' styles
   &:not(:disabled):not(.disabled):active,
   &:not(:disabled):not(.disabled).active {
-    color: $input-focus-color;
     background-color: $input-focus-bg;
     border-color: $input-focus-border-color;
+    color: $input-focus-color;
     outline: 0;
 
     @if $enable-shadows {
@@ -64,9 +66,9 @@
     transition: margin .4s;
 
     + span {
-      opacity: 0;
-      max-width: 0;
       display: inline-block;
+      max-width: 0;
+      opacity: 0;
       transition: max-width .3s ease-out, opacity .3s ease-in;
     }
   }

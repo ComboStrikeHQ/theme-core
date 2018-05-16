@@ -1,8 +1,10 @@
+// scss-lint:disable NestingDepth QualifyingElement SelectorDepth SelectorFormat
+
 .dayz {
   &.month .days {
     border: 1px solid $table-border-color;
-    border-width: 1px 0 0 1px;
     border-radius: $border-radius-lg;
+    border-width: 1px 0 0 1px;
     overflow: hidden;
 
     .day {

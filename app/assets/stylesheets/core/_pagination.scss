@@ -1,7 +1,9 @@
+// scss-lint:disable NestingDepth
+
 .pagination {
-  margin-top: $spacer;
   display: flex;
   justify-content: center;
+  margin-top: $spacer;
 
   .page,
   .first,
@@ -17,10 +19,10 @@
 
     &.current,
     &.gap {
-      color: $pagination-active-color;
-      pointer-events: none;
       background-color: $pagination-active-bg;
       border-color: $pagination-active-border-color;
+      color: $pagination-active-color;
+      pointer-events: none;
     }
 
     &:first-child {
