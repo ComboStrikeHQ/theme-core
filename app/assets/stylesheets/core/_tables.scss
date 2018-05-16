@@ -8,6 +8,10 @@
   }
 }
 
+.table {
+  font-size: $font-size-sm;
+}
+
 .table > thead {
   @extend %table-bookend;
   border-bottom: $table-border-width solid darken($table-head-bg, 10%);
@@ -20,13 +24,18 @@
 
   // styles for not-last-row of a multi-row table-header
   > tr:not(:last-child) > th {
-    border-bottom: $table-border-width dashed rgba($gray-200, .5);
-    color: $white;
-    font-size: .9em;
+    border-bottom: $table-border-width dashed rgba(color-yiq($table-head-bg), .1);
+    color: rgba(color-yiq($table-head-bg), .6);
+    font-size: .8em;
     font-style: italic;
     font-weight: normal;
     padding-bottom: $table-cell-padding-sm;
     text-transform: uppercase;
+  }
+
+  // styles for not-first-row of a multi-row table-header
+  > tr + tr > th {
+    padding-top: $table-cell-padding-sm;
   }
 
   .table-header--sortable {
@@ -51,7 +60,6 @@
   th,
   td {
     font-family: $font-family-monospace;
-    font-size: $font-size-sm;
 
     .btn {
       @extend .btn-sm;

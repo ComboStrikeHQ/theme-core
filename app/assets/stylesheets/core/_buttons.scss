@@ -16,7 +16,8 @@
   }
 
   // separate icon from label (within button)
-  &:not(.btn-extend) .fa {
+  &:not(.btn-extend) .fab,
+  &:not(.btn-extend) .fas {
     &:first-child {
       margin-right: $spacer / 3;
     }
@@ -55,7 +56,8 @@
 .btn-extend {
   overflow: hidden;
 
-  .fa {
+  .fab,
+  .fas {
     display: inline-block;
     margin-right: 0;
     min-width: 1em;
@@ -71,7 +73,8 @@
 
   &:not(.disabled):not(:disabled):hover,
   .btn-group:not(.disabled):not(:disabled) &:hover {
-    .fa {
+    .fab,
+    .fas {
       margin-right: $spacer / 3;
 
       + span {
