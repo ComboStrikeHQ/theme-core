@@ -6,6 +6,7 @@
     background-color: $table-head-bg;
     border: 0;
     color: rgba(color-yiq($table-head-bg), .8);
+    font-weight: normal;
     vertical-align: bottom;
     white-space: nowrap;
   }
@@ -14,41 +15,42 @@
 .table {
   font-size: $font-size-sm;
 
-  th,
-  td {
-    border-top: $table-border-width solid $table-border-color;
-    font-weight: normal;
-    padding: $table-cell-padding;
+  tbody {
+    th,
+    td {
+      border-top: $table-border-width solid $table-border-color;
+      // font-weight: normal;
+      padding: $table-cell-padding;
 
-    tr:first-child & {
-      border-top: 0;
-    }
-  }
-
-  td {
-    font-family: $font-family-monospace;
-    vertical-align: top;
-
-    .btn {
-      @extend .btn-sm;
+      tr:first-child & {
+        border-top: 0;
+      }
     }
 
-    // offsets the padding around inputs/buttons in table cells
-    $cell-padding-offset: -(($input-btn-line-height * $font-size-base) / 3);
+    td {
+      font-family: $font-family-monospace;
 
-    > .btn,
-    > .form-control,
-    > .cell-padding-offset {
-      margin-bottom: $cell-padding-offset;
-      margin-top: $cell-padding-offset;
-    }
+      .btn {
+        @extend .btn-sm;
+      }
 
-    > .form-group,
-    > .input-group,
-    > .btn-group {
-      display: flex;
-      margin-bottom: $cell-padding-offset;
-      margin-top: $cell-padding-offset;
+      // offsets the padding around inputs/buttons in table cells
+      $cell-padding-offset: -(($input-btn-line-height * $font-size-base) / 3);
+
+      > .btn,
+      > .form-control,
+      > .cell-padding-offset {
+        margin-bottom: $cell-padding-offset;
+        margin-top: $cell-padding-offset;
+      }
+
+      > .form-group,
+      > .input-group,
+      > .btn-group {
+        display: flex;
+        margin-bottom: $cell-padding-offset;
+        margin-top: $cell-padding-offset;
+      }
     }
   }
 
@@ -80,17 +82,24 @@
 
   tfoot {
     border-top: $table-border-width solid $card-border-color;
-    font-weight: bold;
 
     th,
     td {
-      background-color: $info;
-      color: $white;
+      background-color: rgba($info, .75);
+      color: color-yiq($info);
+      font-weight: bold;
+      vertical-align: middle;
     }
   }
 
   .table-header--sortable {
+    color: $link-color;
     cursor: pointer;
+    transition: color .1s ease-out;
+
+    &:hover {
+      color: $link-hover-color;
+    }
   }
 
   .order {

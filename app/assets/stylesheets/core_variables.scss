@@ -70,6 +70,11 @@ $font-weight-bold:                  600 !default;
 // forms
 $input-bg:                          rgba($gray-100, .8) !default;
 $input-focus-bg:                    $white !default;
+$input-color:                       $body-color !default;
+
+// links
+$link-color:                        $primary;
+$link-hover-color:                  darken($link-color, 15%) !default;
 
 // navbar
 $navbar-dark-color:                 rgba($white, 1) !default;
@@ -93,12 +98,12 @@ $nav-tabs-link-active-bg:           transparent !default;
 $nav-tabs-link-active-border-color: transparent !default;
 
 // pagination
-$pagination-color:                  $primary !default;
-$pagination-bg:                     transparent !default;
-$pagination-active-color:           $body-color !default;
-$pagination-active-bg:              #ddd !default;
-$pagination-active-border-color:    #ddd !default;
-$pagination-disabled-bg:            transparent !default;
+$pagination-color:                  $link-color !default;
+$pagination-bg:                     $body-bg !default;
+$pagination-border-color:           $gray-300 !default;
+$pagination-hover-color:            $link-hover-color !default;
+$pagination-hover-bg:               $body-bg !default;
+$pagination-hover-border-color:     $link-color !default;
 
 // popovers
 $popover-arrow-height:              .4rem !default;

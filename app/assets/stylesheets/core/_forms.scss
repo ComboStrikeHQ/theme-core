@@ -116,6 +116,10 @@ input::-webkit-contacts-auto-fill-button {
   @if $color != 'light' and $color != 'white' {
     .bg-#{$color} {
       @include form-border-color(transparent);
+
+      .card {
+        @include form-border-color($input-border-color);
+      }
     }
   }
 }
