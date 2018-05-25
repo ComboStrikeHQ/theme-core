@@ -1,5 +1,3 @@
-$nested-card-border-radius: ($spacer / 4);
-
 // filters
 .btn-toolbar {
   .form-group,
@@ -37,22 +35,8 @@ $nested-card-border-radius: ($spacer / 4);
 }
 
 .card {
-  $card-inner-border-radius: calc(#{$card-border-radius} - #{$card-border-width});
-  $nested-card-inner-border-radius: calc(#{$card-border-radius} - #{$spacer / 4});
-
-  > *:first-child {
-    border-top-left-radius: $card-inner-border-radius;
-    border-top-right-radius: $card-inner-border-radius;
-  }
-
-  > *:last-child {
-    border-bottom-left-radius: $card-inner-border-radius;
-    border-bottom-right-radius: $card-inner-border-radius;
-  }
-
   %nested-card-header {
     background-color: $body-bg;
-    border: 0;
     color: rgba(color-yiq($body-bg), .4);
     font-size: $h6-font-size;
     font-weight: bold;
@@ -62,20 +46,22 @@ $nested-card-border-radius: ($spacer / 4);
 
   // nested cards
   .card {
-    border: $nested-card-border-radius solid $body-bg;
-
-    > *:first-child {
-      border-top-left-radius: $nested-card-inner-border-radius;
-      border-top-right-radius: $nested-card-inner-border-radius;
-    }
-
-    > *:last-child {
-      border-bottom-left-radius: $nested-card-inner-border-radius;
-      border-bottom-right-radius: $nested-card-inner-border-radius;
-    }
+    border: $nested-card-border-width solid $body-bg;
 
     > .card-header {
       @extend %nested-card-header;
+
+      &:first-child {
+        border-radius: calc(#{$nested-card-border-radius} - #{$nested-card-border-width})
+                       calc(#{$nested-card-border-radius} - #{$nested-card-border-width})
+                       0 0;
+      }
+
+      &:last-child {
+        border-radius: 0 0
+                       calc(#{$nested-card-border-radius} - #{$nested-card-border-width})
+                       calc(#{$nested-card-border-radius} - #{$nested-card-border-width});
+      }
     }
   }
 

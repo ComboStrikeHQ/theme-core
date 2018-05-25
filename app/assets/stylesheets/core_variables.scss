@@ -50,6 +50,8 @@ $border-radius-sm:                  .15rem !default;
 // cards
 $card-border-radius:                $border-radius-lg !default;
 $card-border-color:                 rgba($black, .1) !default;
+$nested-card-border-width:          .25rem; // custom
+$nested-card-border-radius:         $card-border-radius; // custom
 
 // dropdowns
 $dropdown-border-color:             rgba($black, .05) !default;
