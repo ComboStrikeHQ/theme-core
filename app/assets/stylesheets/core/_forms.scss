@@ -1,27 +1,62 @@
 // scss-lint:disable PseudoElement QualifyingElement SelectorFormat
 
-// fix React Bootstrap generates incorrect markup (BS3 -> BS4)
-.input-group-addon {
-  @extend .input-group-text;
-}
-
-.input-group-btn,
-.input-group-addon {
-  &:first-child {
-    @extend .input-group-prepend;
-  }
-
-  &:last-child {
-    @extend .input-group-append;
+// form-control
+%form-control-disabled {
+  &,
+  &:focus {
+    background-color: $input-disabled-bg;
+    border-color: $input-border-color;
+    border-style: solid;
+    color: $input-color;
+    opacity: $btn-disabled-opacity;
+    pointer-events: none;
   }
 }
 
-// fix React Bootstrap doesn't allow class directly on checkbox input
-.form-check > .form-check-label > input[type='checkbox'] {
-  @extend .form-check-input;
+%form-control-focus {
+  background-color: $input-focus-bg;
+  border-color: $input-focus-border-color;
+  color: $input-focus-color;
+  outline: none;
+  box-shadow: $input-btn-focus-box-shadow;
 }
 
-// add icon to button-styled checkboxes
+%form-control {
+  &:not(:disabled):not(.disabled) {
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: $input-focus-bg;
+    }
+
+    &.active:focus,
+    &:active:focus,
+    &:active,
+    &:focus {
+      @extend %form-control-focus;
+    }
+
+    &.has-error,
+    &.has-danger,
+    .has-error &,
+    .has-danger & {
+      @extend .border-danger;
+    }
+  }
+
+  &:disabled,
+  &.disabled,
+  &[readonly] {
+    @extend %form-control-disabled;
+  }
+}
+
+.form-control {
+  @extend %form-control;
+}
+
+// button-styled checkboxes (toggle-buttons)
+
 %btn-toggle {
   &::before {
     content: '\f204';
@@ -52,47 +87,10 @@ label.btn[class*='checkbox'] {
   padding-left: 0;
 }
 
+// misc
+
 textarea {
   min-height: 6em;
-}
-
-.date-field {
-  position: relative;
-}
-
-.form-text {
-  @extend .small;
-  font-style: italic;
-}
-
-.form-control {
-  &:not(.btn):not([readonly]):not(:disabled) {
-    &:hover,
-    &:focus,
-    &:active {
-      background-color: $input-focus-bg;
-    }
-
-    &[disabled]:focus,
-    &[readonly]:focus {
-      box-shadow: none;
-      cursor: default;
-    }
-  }
-
-  &.has-error,
-  &.has-danger,
-  .has-error &,
-  .has-danger & {
-    @extend .border-danger;
-  }
-
-  &:disabled,
-  &[readonly] {
-    background-color: $input-bg;
-    border-color: lighten($input-border-color, 5%);
-    border-style: dashed;
-  }
 }
 
 input[type=number] {
@@ -105,51 +103,22 @@ input[type=number] {
   }
 }
 
-// hide auto-fill icon on safari
-// https://github.com/brigade/scss-lint/pull/939
-input::-webkit-contacts-auto-fill-button {
-  opacity: 0;
+.date-field {
+  position: relative;
 }
 
-// removes gray border from inputs when they are on a darker background
-@each $color, $value in $theme-colors {
-  @if $color != 'light' and $color != 'white' {
-    .bg-#{$color} {
-      @include form-border-color(transparent);
-
-      .card {
-        @include form-border-color($input-border-color);
-      }
-    }
-  }
+.form-text {
+  @extend .small;
+  font-style: italic;
 }
+
+// utilities
 
 .textarea--full-height {
   flex-grow: 1;
 
   textarea {
     height: 100%;
-  }
-}
-
-// fix square edges after label
-label + .form-control:not(:first-child) {
-  .form-group > &,
-  .input-group > & {
-    border-bottom-left-radius: $input-border-radius;
-    border-top-left-radius: $input-border-radius;
-  }
-
-  .input-group-lg > &,
-  .form-group-lg > & {
-    border-bottom-left-radius: $input-border-radius-lg;
-    border-top-left-radius: $input-border-radius-lg;
-  }
-
-  .input-group-sm > &,
-  .form-group-sm > & {
-    border-bottom-left-radius: $input-border-radius-sm;
-    border-top-left-radius: $input-border-radius-sm;
   }
 }
 
@@ -216,4 +185,68 @@ label + .form-control:not(:first-child) {
 .help-block,
 .form-control-feedback {
   @extend %help-block;
+}
+
+// fixes / hacks
+
+// hide auto-fill icon on safari
+// https://github.com/brigade/scss-lint/pull/939
+input::-webkit-contacts-auto-fill-button {
+  opacity: 0;
+}
+
+
+// removes gray border from inputs when they are on a darker background
+@each $color, $value in $theme-colors {
+  @if $color != 'light' and $color != 'white' {
+    .bg-#{$color} {
+      @include form-border-color(transparent);
+
+      .card {
+        @include form-border-color($input-border-color);
+      }
+    }
+  }
+}
+
+// fix square edges after label
+label + .form-control:not(:first-child) {
+  .form-group > &,
+  .input-group > & {
+    border-bottom-left-radius: $input-border-radius;
+    border-top-left-radius: $input-border-radius;
+  }
+
+  .input-group-lg > &,
+  .form-group-lg > & {
+    border-bottom-left-radius: $input-border-radius-lg;
+    border-top-left-radius: $input-border-radius-lg;
+  }
+
+  .input-group-sm > &,
+  .form-group-sm > & {
+    border-bottom-left-radius: $input-border-radius-sm;
+    border-top-left-radius: $input-border-radius-sm;
+  }
+}
+
+// fix React Bootstrap generates incorrect markup (BS3 -> BS4)
+.input-group-addon {
+  @extend .input-group-text;
+}
+
+.input-group-btn,
+.input-group-addon {
+  &:first-child {
+    @extend .input-group-prepend;
+  }
+
+  &:last-child {
+    @extend .input-group-append;
+  }
+}
+
+// fix React Bootstrap doesn't allow class directly on checkbox input
+.form-check > .form-check-label > input[type='checkbox'] {
+  @extend .form-check-input;
 }

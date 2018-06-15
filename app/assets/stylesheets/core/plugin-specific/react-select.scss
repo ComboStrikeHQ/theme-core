@@ -1,24 +1,9 @@
 // scss-lint:disable NestingDepth QualifyingElement SelectorDepth SelectorFormat
-
-%form-control-focus {
-  background-color: $input-focus-bg;
-  border-color: $input-focus-border-color;
-  color: $input-focus-color;
-  outline: none;
-
-  @if $enable-shadows {
-    box-shadow: $input-box-shadow, $input-btn-focus-box-shadow;
-  } @else {
-    box-shadow: $input-btn-focus-box-shadow;
-  }
-}
-
-// scss-lint:disable SelectorFormat SelectorDepth
 .Select {
   display: flex;
   flex: 1 1 auto;
 
-  &:not(.is-focused):not(.is-open):hover {
+  &:not(.is-focused):not(.is-open):not(.is-disabled):hover {
     > .Select-control {
       background-color: $input-focus-bg;
       box-shadow: none;
@@ -26,9 +11,11 @@
   }
 
   &.is-focused,
-  &.is-open {
+  &.is-open,
+  &.is-focused:not(.is-open) {
     > .Select-control {
       @extend %form-control-focus;
+      border-radius: $input-border-radius;
     }
   }
 
@@ -65,7 +52,8 @@
         height: $input-height-inner;
         line-height: $input-height-inner;
         max-width: 100%; // prevent React Select inputs collapsing width
-        min-width: 80px; // prevent React Select inputs collapsing width
+        // min-width: 80px; // prevent React Select inputs collapsing width
+        min-width: 1em;
         padding-bottom: 0;
         padding-top: 0;
 
@@ -96,6 +84,12 @@
   + .input-group-append {
     margin-left: -$input-border-radius;
     position: relative;
+  }
+
+  &.is-disabled {
+    > .Select-control {
+      @extend %form-control-disabled;
+    }
   }
 }
 

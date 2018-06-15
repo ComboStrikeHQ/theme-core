@@ -35,3 +35,13 @@
 .rtl {
   direction: rtl;
 }
+
+// force top-level shadow
+.shadow {
+  @extend %card-shadow;
+}
+
+// force hide shadow
+.no-shadow {
+  box-shadow: none;
+}

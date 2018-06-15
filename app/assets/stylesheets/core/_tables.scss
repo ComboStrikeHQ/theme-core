@@ -9,17 +9,24 @@
     font-weight: normal;
     vertical-align: bottom;
     white-space: nowrap;
+
+    a {
+      text-decoration: none;
+    }
   }
 }
 
 .table {
   font-size: $font-size-sm;
 
+  // &:last-child {
+  //   margin-bottom: 0;
+  // }
+
   tbody {
     th,
     td {
       border-top: $table-border-width solid $table-border-color;
-      // font-weight: normal;
       padding: $table-cell-padding;
 
       tr:first-child & {
@@ -156,53 +163,41 @@
   }
 }
 
-// avoid card border causing a blurry edge appearance against the gray thead
-.card .table {
-  margin: 0;
-
-  // full-size tables in cards, including border-radius
-  thead tr:first-child {
-    th:first-child {
-      border-top-left-radius: $card-border-radius;
-    }
-
-    th:last-child {
-      border-top-right-radius: $card-border-radius;
+// full-size tables in cards, accounting for border-radius
+.card {
+  &,
+  .card-body {
+    > .table:last-child,
+    > .table-responsive:last-child > .table {
+      margin-bottom: 0;
     }
   }
 
-  tfoot tr:last-child {
-    th:first-child,
-    td:first-child {
-      border-bottom-left-radius: $card-border-radius;
-    }
+  > .table:first-child,
+  > .table-responsive:first-child > .table {
+    thead tr:first-child {
+      th:first-child {
+        border-top-left-radius: $card-border-radius;
+      }
 
-    th:last-child,
-    td:last-child {
-      border-bottom-right-radius: $card-border-radius;
-    }
-  }
-}
-
-// squared-off tables when not full-size in card
-.card-body .table {
-  margin-bottom: $spacer;
-
-  thead tr:first-child {
-    th:first-child,
-    th:last-child {
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
+      th:last-child {
+        border-top-right-radius: $card-border-radius;
+      }
     }
   }
 
-  tfoot tr:first-child {
-    th:first-child,
-    th:last-child,
-    td:first-child,
-    td:last-child {
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
+  > .table:last-child,
+  > .table-responsive:last-child > .table {
+    tfoot tr:last-child {
+      th:first-child,
+      td:first-child {
+        border-bottom-left-radius: $card-border-radius;
+      }
+
+      th:last-child,
+      td:last-child {
+        border-bottom-right-radius: $card-border-radius;
+      }
     }
   }
 }

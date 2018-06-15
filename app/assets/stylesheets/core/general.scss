@@ -25,9 +25,8 @@ footer {
   }
 }
 
-.card,
-.btn:not(.btn-link),
-.form-group {
+// top-level shadows
+.card {
   @extend %card-shadow;
 
   .card &,
@@ -35,22 +34,6 @@ footer {
   .popover & {
     box-shadow: none;
   }
-}
-
-// fix for top-level form-group shadows showing squared-off corners when containing cards/buttons
-.form-group {
-  border-radius: $card-border-radius;
-
-  .card &,
-  .modal &,
-  .popover & {
-    border-radius: 0;
-  }
-}
-
-// for top-level elements that should appear flat against the background/page-body
-.no-shadow {
-  box-shadow: none;
 }
 
 .alert {

@@ -6,7 +6,8 @@
 .Select > .Select-control {
   transition: border-color .1s ease-in,
               background-color .2s ease-out,
-              color .1s ease-out;
+              color .1s ease-out,
+              box-shadow .2s ease-out;
 }
 
 // React Bootstrap may still generate '.btn-xs' (removed in BS4)
@@ -15,17 +16,6 @@
 }
 
 .btn {
-  &:not(:disabled):hover,
-  &:not(.disabled):hover {
-    cursor: pointer;
-  }
-
-  &.disabled,
-  &:disabled {
-    opacity: .4;
-    pointer-events: none;
-  }
-
   // separate icon from label (within button)
   &:not(.btn-extend) .fab,
   &:not(.btn-extend) .fas {
@@ -46,28 +36,8 @@
 // new button class: matching checkbox toggle buttons with other inputs
 .btn-input {
   @include button-variant($input-bg, $input-border-color, $white, $input-border-color, $white, $input-focus-border-color);
-  color: $input-color;
-
-  // duplicate bootstrap '.form-control:active' styles
-  &:not(:disabled):not(.disabled):active,
-  &:not(:disabled):not(.disabled).active {
-    background-color: $input-focus-bg;
-    border-color: $input-focus-border-color;
-    color: $input-focus-color;
-    outline: 0;
-
-    @if $enable-shadows {
-      box-shadow: $input-box-shadow, $input-focus-box-shadow;
-    } @else {
-      box-shadow: $input-focus-box-shadow;
-    }
-  }
-
-  &:hover,
-  &:focus,
-  &:active {
-    background-color: $input-focus-bg;
-  }
+  @extend %form-control;
+  text-decoration: none;
 }
 
 // new button class: icon buttons that extend to show text
