@@ -51,12 +51,6 @@
     > .card-header {
       @extend %nested-card-header;
 
-      &:first-child {
-        border-radius: calc(#{$nested-card-border-radius} - #{$nested-card-border-width})
-                       calc(#{$nested-card-border-radius} - #{$nested-card-border-width})
-                       0 0;
-      }
-
       &:last-child {
         border-radius: 0 0
                        calc(#{$nested-card-border-radius} - #{$nested-card-border-width})
@@ -72,5 +66,6 @@
     margin-left: $card-spacer-x;
     padding-bottom: $card-spacer-y / 3;
     padding-top: $card-spacer-y / 3;
+    border-bottom: 0;
   }
 }

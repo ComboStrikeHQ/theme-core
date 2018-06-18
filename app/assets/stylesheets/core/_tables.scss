@@ -18,10 +18,7 @@
 
 .table {
   font-size: $font-size-sm;
-
-  // &:last-child {
-  //   margin-bottom: 0;
-  // }
+  margin-bottom: 0;
 
   tbody {
     th,
@@ -165,16 +162,9 @@
 
 // full-size tables in cards, accounting for border-radius
 .card {
-  &,
-  .card-body {
-    > .table:last-child,
-    > .table-responsive:last-child > .table {
-      margin-bottom: 0;
-    }
-  }
-
   > .table:first-child,
-  > .table-responsive:first-child > .table {
+  > .table-responsive:first-child .table,
+  > script:first-child ~ [id*='react-component'] .table {
     thead tr:first-child {
       th:first-child {
         border-top-left-radius: $card-border-radius;
@@ -187,7 +177,8 @@
   }
 
   > .table:last-child,
-  > .table-responsive:last-child > .table {
+  > .table-responsive:last-child .table,
+  > [id*='react-component']:last-child .table {
     tfoot tr:last-child {
       th:first-child,
       td:first-child {
