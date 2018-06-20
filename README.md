@@ -40,15 +40,9 @@ gem 'theme-core', git: 'https://github.com/ad2games/theme-core'
 
 @import 'core_theme';             // from theme-core gem
 @import 'theme/**/*';             // from project - all project specific styles stored in 'stylesheets/theme' folder
-
 ```
 
-Currently there is no theme-core javascript, but just in case...
 ###### javascripts/application.js
 ```javascript
-//= require jquery3
-//= require popper
-//= require bootstrap
 //= require core_js
-
 ```
