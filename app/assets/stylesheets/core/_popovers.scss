@@ -50,7 +50,7 @@
   }
 
   &.in {
-    @extend .show;
+    display: block;
   }
 
   &.top,
