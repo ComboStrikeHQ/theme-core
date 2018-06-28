@@ -10,26 +10,18 @@
     }
   }
 
-  &.is-focused,
-  &.is-open,
-  &.is-focused:not(.is-open) {
-    > .Select-control {
-      @extend %form-control-focus;
-      border-radius: $input-border-radius;
-    }
-  }
-
   > .Select-control {
-    @include transition($input-transition);
     align-items: center;
     background-color: $input-bg;
-    border: $input-btn-border-width solid $input-border-color;
     border-radius: $input-border-radius;
+    border: $input-btn-border-width solid $input-border-color;
+    box-shadow: none;
     display: flex;
     font-size: $font-size-base;
     height: auto;
     line-height: $input-btn-line-height;
     min-height: $input-height;
+    transition: $input-transition;
 
     .Select-multi-value-wrapper {
       width: 100%;
@@ -52,7 +44,6 @@
         height: $input-height-inner;
         line-height: $input-height-inner;
         max-width: 100%; // prevent React Select inputs collapsing width
-        // min-width: 80px; // prevent React Select inputs collapsing width
         min-width: 1em;
         padding-bottom: 0;
         padding-top: 0;
@@ -61,6 +52,15 @@
           outline: none;
         }
       }
+    }
+  }
+
+  &.is-focused,
+  &.is-open {
+    > .Select-control {
+      @extend %form-control-focus;
+      // prevent react-select changing border-radius on .is-open
+      border-radius: $input-border-radius;
     }
   }
 
@@ -159,5 +159,47 @@
 
   .enum-select__button {
     @extend .btn-success;
+  }
+}
+
+// also outline dropdown-menu, when placed in a card-header/toolbar
+.btn-toolbar,
+.card-header {
+  .Select > .Select-menu-outer {
+    box-shadow: $input-btn-focus-box-shadow;
+  }
+}
+
+// styles for 'multi-selects' alowing them to float over a button
+// this avoids the expanding select from breaking layout
+.multi-select {
+  position: relative;
+
+  .btn {
+    color: $input-color;
+
+    .placeholder {
+      color: $input-placeholder-color;
+    }
+
+    .Select-arrow {
+      right: -.15em;
+    }
+  }
+
+  .Select {
+    position: absolute;
+    width: 100%;
+    z-index: $zindex-dropdown;
+
+    &,
+    .Select-control {
+      top: 0;
+    }
+
+    .Select-placeholder {
+      line-height: 1em;
+      padding-top: $spacer / 2;
+    }
   }
 }

@@ -5,3 +5,5 @@ require 'theme-core/engine'
 require 'jquery-rails'
 require 'bootstrap'
 require 'font-awesome-sass'
+
+# rubocop:enable Style/FileName

@@ -4,7 +4,7 @@ $LOAD_PATH.push File.expand_path('../lib', __FILE__)
 
 Gem::Specification.new do |s|
   s.name      = 'theme-core'
-  s.version   = 0.8
+  s.version   = 0.9
   s.platform  = Gem::Platform::RUBY
   s.authors   = ['ad2games']
   s.email     = ['developers@ad2games.com']
@@ -14,8 +14,8 @@ Gem::Specification.new do |s|
   s.files     = `git ls-files`.split("\n")
   s.require_paths = %w[lib assets fonts]
 
-  s.add_dependency 'sass-rails'
-  s.add_dependency 'jquery-rails'
   s.add_dependency 'bootstrap', '~> 4.1.1'
   s.add_dependency 'font-awesome-sass'
+  s.add_dependency 'jquery-rails'
+  s.add_dependency 'sass-rails'
 end

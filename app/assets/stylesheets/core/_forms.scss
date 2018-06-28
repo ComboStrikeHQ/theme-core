@@ -16,9 +16,9 @@
 %form-control-focus {
   background-color: $input-focus-bg;
   border-color: $input-focus-border-color;
+  box-shadow: $input-btn-focus-box-shadow;
   color: $input-focus-color;
   outline: none;
-  box-shadow: $input-btn-focus-box-shadow;
 }
 
 %form-control {
