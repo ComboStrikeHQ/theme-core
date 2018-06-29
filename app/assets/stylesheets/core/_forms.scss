@@ -24,6 +24,14 @@
 %form-control {
   + .input-group-btn .btn-outline-secondary {
     border-color: $input-border-color;
+
+    &:not(:disabled):not(.disabled) {
+      &:hover,
+      &:focus,
+      &:active {
+        border-color: transparent;
+      }
+    }
   }
 
   &:not(:disabled):not(.disabled) {
@@ -49,13 +57,17 @@
   }
 
   &:disabled,
-  &.disabled,
-  &[readonly] {
+  &.disabled {
     @extend %form-control-disabled;
 
     + .input-group-btn .btn {
       @extend %form-control-disabled;
     }
+  }
+
+  &[readonly] {
+    background-color: transparent;
+    border-color: rgba($input-border-color, $btn-disabled-opacity);
   }
 }
 
