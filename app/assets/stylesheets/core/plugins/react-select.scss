@@ -2,6 +2,7 @@
 .Select {
   display: flex;
   flex: 1 1 auto;
+  min-width: 8em;
 
   &:not(.is-focused):not(.is-open):not(.is-disabled):hover {
     > .Select-control {
@@ -17,7 +18,7 @@
     border: $input-btn-border-width solid $input-border-color;
     box-shadow: none;
     display: flex;
-    font-size: $font-size-base;
+    font-size: inherit; // $font-size-base;
     height: auto;
     line-height: $input-btn-line-height;
     min-height: $input-height;
@@ -53,6 +54,15 @@
         }
       }
     }
+
+    // selects down-caret or clear icon (whichever is last)
+    > *:last-child {
+      padding-right: $input-btn-padding-x;
+
+      span {
+        float: right;
+      }
+    }
   }
 
   &.is-focused,
@@ -66,6 +76,8 @@
 
   .Select-placeholder,
   &.Select--single > .Select-control .Select-value {
+    margin-top: 0;
+    line-height: $input-height-inner;
     padding-left: $input-btn-padding-x;
     padding-right: $input-btn-padding-x;
   }
@@ -93,63 +105,73 @@
   }
 }
 
-.input-group-lg > .Select {
-  > .Select-control {
-    border-radius: $input-border-radius-lg;
-    font-size: $font-size-lg;
-    line-height: $input-btn-line-height-lg;
-    min-height: $input-height-lg;
-
-    .Select-value {
+.form-group-lg,
+.input-group-lg {
+  .Select {
+    > .Select-control {
+      border-radius: $input-border-radius-lg;
+      font-size: $font-size-lg;
       line-height: $input-btn-line-height-lg;
-      margin-top: $input-btn-padding-y-lg;
+      min-height: $input-height-lg;
+
+      .Select-value {
+        line-height: $input-btn-line-height-lg;
+        margin-top: $input-btn-padding-y-lg;
+      }
+
+      .Select-input,
+      .Select-input > input {
+        height: $input-height-inner-lg;
+        line-height: $input-height-inner-lg;
+      }
     }
 
-    .Select-input,
-    .Select-input > input {
-      height: $input-height-inner-lg;
+    .Select-placeholder,
+    &.Select--single > .Select-control .Select-value {
+      margin-top: 0;
       line-height: $input-height-inner-lg;
+      padding-left: $input-btn-padding-x-lg;
+      padding-right: $input-btn-padding-x-lg;
     }
-  }
 
-  .Select-placeholder,
-  &.Select--single > .Select-control .Select-value {
-    padding-left: $input-btn-padding-x-lg;
-    padding-right: $input-btn-padding-x-lg;
-  }
-
-  + .input-group-append {
-    margin-left: -$input-border-radius-lg;
+    + .input-group-append {
+      margin-left: -$input-border-radius-lg;
+    }
   }
 }
 
-.input-group-sm > .Select {
-  > .Select-control {
-    border-radius: $input-border-radius-sm;
-    font-size: $font-size-sm;
-    line-height: $input-btn-line-height-sm;
-    min-height: $input-height-sm;
-
-    .Select-value {
+.form-group-sm,
+.input-group-sm {
+  .Select {
+    > .Select-control {
+      border-radius: $input-border-radius-sm;
+      font-size: $font-size-sm;
       line-height: $input-btn-line-height-sm;
-      margin-top: $input-btn-padding-y-sm;
+      min-height: $input-height-sm;
+
+      .Select-value {
+        line-height: $input-btn-line-height-sm;
+        margin-top: $input-btn-padding-y-sm;
+      }
+
+      .Select-input,
+      .Select-input > input {
+        height: $input-height-inner-sm;
+        line-height: $input-height-inner-sm;
+      }
     }
 
-    .Select-input,
-    .Select-input > input {
-      height: $input-height-inner-sm;
+    .Select-placeholder,
+    &.Select--single > .Select-control .Select-value {
+      margin-top: 0;
       line-height: $input-height-inner-sm;
+      padding-left: $input-btn-padding-x-sm;
+      padding-right: $input-btn-padding-x-sm;
     }
-  }
 
-  .Select-placeholder,
-  &.Select--single > .Select-control .Select-value {
-    padding-left: $input-btn-padding-x-sm;
-    padding-right: $input-btn-padding-x-sm;
-  }
-
-  + .input-group-append {
-    margin-left: -$input-border-radius-sm;
+    + .input-group-append {
+      margin-left: -$input-border-radius-sm;
+    }
   }
 }
 
@@ -174,6 +196,7 @@
 // this avoids the expanding select from breaking layout
 .multi-select {
   position: relative;
+  width: 100%;
 
   .btn {
     color: $input-color;
@@ -182,10 +205,14 @@
       color: $input-placeholder-color;
     }
 
-    .Select-arrow {
-      position: relative;
-      right: -.15em;
-      top: .1em;
+    .form-group-lg &,
+    .input-group-lg & {
+      @extend .btn-lg;
+    }
+
+    .form-group-sm &,
+    .input-group-sm & {
+      @extend .btn-sm;
     }
   }
 
@@ -197,11 +224,6 @@
     &,
     .Select-control {
       top: 0;
-    }
-
-    .Select-placeholder {
-      line-height: 1em;
-      padding-top: $spacer / 2;
     }
   }
 }

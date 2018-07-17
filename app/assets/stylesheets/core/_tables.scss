@@ -20,6 +20,10 @@
   font-size: $font-size-sm;
   margin-bottom: 0;
 
+  td {
+    font-family: $font-family-monospace;
+  }
+
   tbody {
     th,
     td {
@@ -32,8 +36,6 @@
     }
 
     td {
-      font-family: $font-family-monospace;
-
       .btn {
         @extend .btn-sm;
       }
