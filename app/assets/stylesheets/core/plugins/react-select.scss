@@ -25,7 +25,8 @@
     transition: $input-transition;
 
     .Select-multi-value-wrapper {
-      width: 100%;
+      // prevent a long selected tag pushing the controls out of view
+      width: calc(100% - 25px); // 25px = .Select-arrow-zone width
 
       .Select-value {
         line-height: $input-btn-line-height;
