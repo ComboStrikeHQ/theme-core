@@ -4,7 +4,7 @@ $LOAD_PATH.push File.expand_path('../lib', __FILE__)
 
 Gem::Specification.new do |s|
   s.name      = 'theme-core'
-  s.version   = 1.04
+  s.version   = 1.05
   s.platform  = Gem::Platform::RUBY
   s.authors   = ['ad2games']
   s.email     = ['developers@ad2games.com']

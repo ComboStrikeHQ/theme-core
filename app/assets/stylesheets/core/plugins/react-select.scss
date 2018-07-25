@@ -106,73 +106,72 @@
   }
 }
 
-.form-group-lg,
-.input-group-lg {
-  .Select {
-    > .Select-control {
-      border-radius: $input-border-radius-lg;
-      font-size: $font-size-lg;
+.form-group-lg .Select,
+.input-group-lg .Select,
+.Select.select--lg {
+  > .Select-control {
+    border-radius: $input-border-radius-lg;
+    font-size: $font-size-lg;
+    line-height: $input-btn-line-height-lg;
+    min-height: $input-height-lg;
+
+    .Select-value {
       line-height: $input-btn-line-height-lg;
-      min-height: $input-height-lg;
-
-      .Select-value {
-        line-height: $input-btn-line-height-lg;
-        margin-top: $input-btn-padding-y-lg;
-      }
-
-      .Select-input,
-      .Select-input > input {
-        height: $input-height-inner-lg;
-        line-height: $input-height-inner-lg;
-      }
+      margin-top: $input-btn-padding-y-lg;
     }
 
-    .Select-placeholder,
-    &.Select--single > .Select-control .Select-value {
-      margin-top: 0;
+    .Select-input,
+    .Select-input > input {
+      height: $input-height-inner-lg;
       line-height: $input-height-inner-lg;
-      padding-left: $input-btn-padding-x-lg;
-      padding-right: $input-btn-padding-x-lg;
     }
+  }
 
-    + .input-group-append {
-      margin-left: -$input-border-radius-lg;
-    }
+  .Select-placeholder,
+  &.Select--single > .Select-control .Select-value {
+    margin-top: 0;
+    line-height: $input-height-inner-lg;
+    padding-left: $input-btn-padding-x-lg;
+    padding-right: $input-btn-padding-x-lg;
+  }
+
+  + .input-group-append {
+    margin-left: -$input-border-radius-lg;
   }
 }
 
-.form-group-sm,
-.input-group-sm {
-  .Select {
-    > .Select-control {
-      border-radius: $input-border-radius-sm;
-      font-size: $font-size-sm;
+.table .Select,
+.form-group-sm .Select,
+.input-group-sm .Select,
+.Select.select--sm {
+  > .Select-control {
+    border-radius: $input-border-radius-sm;
+    font-size: $font-size-sm;
+    line-height: $input-btn-line-height-sm;
+    min-height: $input-height-sm;
+
+    .Select-value {
       line-height: $input-btn-line-height-sm;
-      min-height: $input-height-sm;
-
-      .Select-value {
-        line-height: $input-btn-line-height-sm;
-        margin-top: $input-btn-padding-y-sm;
-      }
-
-      .Select-input,
-      .Select-input > input {
-        height: $input-height-inner-sm;
-        line-height: $input-height-inner-sm;
-      }
+      margin-top: $input-btn-padding-y-sm;
     }
 
-    .Select-placeholder,
-    &.Select--single > .Select-control .Select-value {
-      margin-top: 0;
+    .Select-input,
+    .Select-input > input {
+      height: $input-height-inner-sm;
       line-height: $input-height-inner-sm;
-      padding-left: $input-btn-padding-x-sm;
-      padding-right: $input-btn-padding-x-sm;
     }
+  }
 
-    + .input-group-append {
-      margin-left: -$input-border-radius-sm;
-    }
+  .Select-placeholder,
+  &.Select--single > .Select-control .Select-value {
+    margin-top: 0;
+    line-height: $input-height-inner-sm;
+    padding-left: $input-btn-padding-x-sm;
+    padding-right: $input-btn-padding-x-sm;
+  }
+
+  + .input-group-append {
+    margin-left: -$input-border-radius-sm;
   }
 }
 
@@ -186,9 +185,10 @@
 }
 
 // also outline dropdown-menu, when placed in a card-header/toolbar
-.btn-toolbar,
-.card-header {
-  .Select > .Select-menu-outer {
+.btn-toolbar .Select,
+.card-header .Select,
+.Select.select--highlight {
+  > .Select-menu-outer {
     box-shadow: $input-btn-focus-box-shadow;
   }
 }
@@ -207,24 +207,17 @@
     }
 
     .form-group-lg &,
-    .input-group-lg & {
+    .input-group-lg &,
+    &.btn-lg {
       @extend .btn-lg;
+      padding-right: .75 * $spacer;
     }
 
     .form-group-sm &,
-    .input-group-sm & {
+    .input-group-sm &,
+    &.btn-sm {
       @extend .btn-sm;
-    }
-  }
-
-  .Select {
-    position: absolute;
-    width: 100%;
-    z-index: $zindex-dropdown;
-
-    &,
-    .Select-control {
-      top: 0;
+      padding-right: .75 * $spacer;
     }
   }
 }
