@@ -28,6 +28,10 @@
   @extend %form-control;
   @include button-variant($input-bg, $input-border-color, $white, $input-border-color, $white, $input-focus-border-color);
   text-decoration: none;
+
+  &:not(:disabled):not(.disabled) {
+    cursor: text;
+  }
 }
 
 // new button class: icon buttons that extend to show text

@@ -85,6 +85,8 @@ $nested-card-border-radius:         $card-border-radius !default; // custom
 // dropdowns
 $dropdown-border-color:             rgba($black, .05) !default;
 $dropdown-border-radius:            $border-radius-lg !default;
+$dropdown-link-hover-bg:            $gray-200 !default;
+// $dropdown-link-hover-color:         $white !default;
 
 // fonts
 $font-size-base:                    1rem !default; // Assumes the browser default, typically `16px`
@@ -190,6 +192,7 @@ $popover-header-padding-y:          $popover-padding !default;
 // tables
 $table-accent-bg:                   rgba($gray-400, .2) !default;
 $table-border-color:                rgba($gray-400, .3) !default;
+$table-font-family:                 $font-family-monospace !default; // custom
 
 // type
 $headings-font-weight:              bold !default;
