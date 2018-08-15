@@ -1,0 +1,223 @@
+// scss-lint:disable NestingDepth QualifyingElement SelectorDepth SelectorFormat
+.Select {
+  display: flex;
+  flex: 1 1 auto;
+  min-width: 8em;
+
+  &:not(.is-focused):not(.is-open):not(.is-disabled):hover {
+    > .Select-control {
+      background-color: $input-focus-bg;
+      box-shadow: none;
+    }
+  }
+
+  > .Select-control {
+    align-items: center;
+    background-color: $input-bg;
+    border-radius: $input-border-radius;
+    border: $input-btn-border-width solid $input-border-color;
+    box-shadow: none;
+    display: flex;
+    font-size: inherit; // $font-size-base;
+    height: auto;
+    line-height: $input-btn-line-height;
+    min-height: $input-height;
+    transition: $input-transition;
+
+    .Select-multi-value-wrapper {
+      // prevent a long selected tag pushing the controls out of view
+      width: calc(100% - 25px); // 25px = .Select-arrow-zone width
+
+      .Select-value {
+        line-height: $input-btn-line-height;
+        margin-top: $input-btn-padding-y;
+        white-space: nowrap;
+
+        .Select-value-icon,
+        .Select-value-label {
+          padding-bottom: 0;
+          padding-top: 0;
+          vertical-align: top;
+        }
+      }
+
+      .Select-input,
+      .Select-input > input {
+        height: $input-height-inner;
+        line-height: $input-height-inner;
+        max-width: 100%; // prevent React Select inputs collapsing width
+        min-width: 1em;
+        padding-bottom: 0;
+        padding-top: 0;
+
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+
+    // selects down-caret or clear icon (whichever is last)
+    > *:last-child {
+      padding-right: $input-btn-padding-x;
+
+      span {
+        float: right;
+      }
+    }
+  }
+
+  &.is-focused,
+  &.is-open {
+    > .Select-control {
+      @extend %form-control-focus;
+      // prevent react-select changing border-radius on .is-open
+      border-radius: $input-border-radius;
+    }
+  }
+
+  .Select-placeholder,
+  &.Select--single > .Select-control .Select-value {
+    margin-top: 0;
+    line-height: $input-height-inner;
+    padding-left: $input-btn-padding-x;
+    padding-right: $input-btn-padding-x;
+  }
+
+  &.Select--single > .Select-control .Select-value {
+    color: $input-color;
+  }
+
+  > .Select-menu-outer {
+    @extend %dropdown-menu;
+    left: 0; // fix for IE
+    overflow-y: auto;
+    z-index: $zindex-dropdown;
+  }
+
+  + .input-group-append {
+    margin-left: -$input-border-radius;
+    position: relative;
+  }
+
+  &.is-disabled {
+    > .Select-control {
+      @extend %form-control-disabled;
+    }
+  }
+}
+
+.form-group-lg .Select,
+.input-group-lg .Select,
+.Select.select--lg {
+  > .Select-control {
+    border-radius: $input-border-radius-lg;
+    font-size: $font-size-lg;
+    line-height: $input-btn-line-height-lg;
+    min-height: $input-height-lg;
+
+    .Select-value {
+      line-height: $input-btn-line-height-lg;
+      margin-top: $input-btn-padding-y-lg;
+    }
+
+    .Select-input,
+    .Select-input > input {
+      height: $input-height-inner-lg;
+      line-height: $input-height-inner-lg;
+    }
+  }
+
+  .Select-placeholder,
+  &.Select--single > .Select-control .Select-value {
+    margin-top: 0;
+    line-height: $input-height-inner-lg;
+    padding-left: $input-btn-padding-x-lg;
+    padding-right: $input-btn-padding-x-lg;
+  }
+
+  + .input-group-append {
+    margin-left: -$input-border-radius-lg;
+  }
+}
+
+.table .Select,
+.form-group-sm .Select,
+.input-group-sm .Select,
+.Select.select--sm {
+  > .Select-control {
+    border-radius: $input-border-radius-sm;
+    font-size: $font-size-sm;
+    line-height: $input-btn-line-height-sm;
+    min-height: $input-height-sm;
+
+    .Select-value {
+      line-height: $input-btn-line-height-sm;
+      margin-top: $input-btn-padding-y-sm;
+    }
+
+    .Select-input,
+    .Select-input > input {
+      height: $input-height-inner-sm;
+      line-height: $input-height-inner-sm;
+    }
+  }
+
+  .Select-placeholder,
+  &.Select--single > .Select-control .Select-value {
+    margin-top: 0;
+    line-height: $input-height-inner-sm;
+    padding-left: $input-btn-padding-x-sm;
+    padding-right: $input-btn-padding-x-sm;
+  }
+
+  + .input-group-append {
+    margin-left: -$input-border-radius-sm;
+  }
+}
+
+// min width on react-selects, or they collapse with the column
+.table td .enum-select-wrapper {
+  min-width: 140px;
+
+  .enum-select__button {
+    @extend .btn-success;
+  }
+}
+
+// also outline dropdown-menu, when placed in a card-header/toolbar
+.btn-toolbar .Select,
+.card-header .Select,
+.Select.select--highlight {
+  > .Select-menu-outer {
+    box-shadow: $input-btn-focus-box-shadow;
+  }
+}
+
+// styles for 'multi-selects' alowing them to float over a button
+// this avoids the expanding select from breaking layout
+.multi-select {
+  position: relative;
+  width: 100%;
+
+  .btn {
+    color: $input-color;
+
+    .placeholder {
+      color: $input-placeholder-color;
+    }
+
+    .form-group-lg &,
+    .input-group-lg &,
+    &.btn-lg {
+      @extend .btn-lg;
+      padding-right: .75 * $spacer;
+    }
+
+    .form-group-sm &,
+    .input-group-sm &,
+    &.btn-sm {
+      @extend .btn-sm;
+      padding-right: .75 * $spacer;
+    }
+  }
+}
