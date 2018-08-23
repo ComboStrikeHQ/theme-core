@@ -1,5 +1,17 @@
+@include keyframes(multiValueAniIn) {
+  0% {
+    opacity: 0;
+    transform: translateX(-$spacer / 2);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 .ad2games-select {
-  width: 100%;
+  flex-grow: 1;
 
   .placeholder {
     color: $input-placeholder-color;
@@ -32,7 +44,8 @@
       > .react-select__single-value,
       > .react-select__placeholder {
         margin-left: 0;
-        transition: margin-left .2s ease-out;
+        transition: margin-left .15s ease-out,
+                    color .2s ease-out;
       }
     }
 
@@ -64,7 +77,22 @@
         > .react-select__single-value,
         > .react-select__placeholder {
           margin-left: $spacer / 2;
+          color: $input-placeholder-color;
         }
+      }
+    }
+  }
+
+  &.react-select__container--multi {
+    .react-select__value-container--has-value {
+      flex-direction: row-reverse;
+
+      > .react-select__multi-value {
+        animation: multiValueAniIn .15s ease-out 0s normal;
+      }
+
+      > div:last-child {
+        margin-right: auto;
       }
     }
   }
