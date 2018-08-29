@@ -13,12 +13,24 @@
 .ad2games-select {
   flex-grow: 1;
 
-  .placeholder {
-    color: $input-placeholder-color;
-  }
+  .react-select__button {
+    align-items: center;
+    display: flex;
+    width: 100%;
 
-  .fa-chevron-down {
-    margin-top: .1em;
+    .react-select__button__label {
+      color: $input-focus-color;
+      flex-grow: 1;
+      text-align: left;
+
+      &.placeholder {
+        color: $input-placeholder-color;
+      }
+    }
+
+    .fa {
+      margin-top: .1em;
+    }
   }
 }
 
@@ -41,11 +53,17 @@
     .react-select__value-container {
       padding: 0 $input-btn-padding-x;
 
+      .react-select__input {
+        color: $input-focus-color;
+      }
+
       > .react-select__single-value,
       > .react-select__placeholder {
+        max-width: calc(100% - #{$input-btn-padding-x * 2});
         margin-left: 0;
-        transition: margin-left .15s ease-out,
-                    color .2s ease-out;
+        transition: color .15s ease-out,
+                    margin .2s ease-out,
+                    max-width .2s ease-out;
       }
     }
 
@@ -73,12 +91,10 @@
         color: $input-focus-color;
       }
 
-      .react-select__value-container--has-value {
-        > .react-select__single-value,
-        > .react-select__placeholder {
-          margin-left: $spacer / 2;
-          color: $input-placeholder-color;
-        }
+      .react-select__single-value,
+      .react-select__placeholder {
+        margin-left: $spacer / 2;
+        color: $input-placeholder-color;
       }
     }
   }
