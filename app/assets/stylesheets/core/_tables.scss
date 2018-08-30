@@ -43,19 +43,17 @@
       // offsets the padding around inputs/buttons in table cells
       $cell-padding-offset: -(($input-btn-line-height * $font-size-base) / 3);
 
-      > .btn,
-      > .form-control,
-      > .cell-padding-offset {
+      .btn,
+      .cell-padding-offset,
+      .form-control {
         margin-bottom: $cell-padding-offset;
         margin-top: $cell-padding-offset;
       }
 
-      > .form-group,
-      > .input-group,
-      > .btn-group {
+      .form-group,
+      .input-group,
+      .btn-group {
         display: flex;
-        margin-bottom: $cell-padding-offset;
-        margin-top: $cell-padding-offset;
       }
     }
   }
