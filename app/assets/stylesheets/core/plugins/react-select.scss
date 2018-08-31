@@ -36,6 +36,9 @@
 
 // 'body' recruited to the specificity war with react-select built-in styles (z-index)
 body > .react-select__container {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
   width: 100%;
   z-index: $zindex-dropdown;
 
