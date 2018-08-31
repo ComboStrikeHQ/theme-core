@@ -34,8 +34,10 @@
   }
 }
 
-.react-select__container {
+// 'body' recruited to the specificity war with react-select built-in styles (z-index)
+body > .react-select__container {
   width: 100%;
+  z-index: $zindex-dropdown;
 
   .react-select__control {
     border-color: $input-border-color;
@@ -161,6 +163,11 @@
 
   &.select--in-table {
     font-family: $table-font-family;
+    z-index: 2; // StickyTableHeaders sets itself to 3
+  }
+
+  &.select--in-modal {
+    z-index: $zindex-modal;
   }
 
   &.select--in-toolbar {
