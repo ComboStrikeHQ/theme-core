@@ -45,9 +45,17 @@
 
       .btn,
       .cell-padding-offset,
-      .form-control {
+      .form-control,
+      .input-group-append,
+      .input-group-prepend {
         margin-bottom: $cell-padding-offset;
         margin-top: $cell-padding-offset;
+      }
+
+      .form-group,
+      .input-group,
+      .btn-group {
+        margin-bottom: 0;
       }
 
       .form-group,
