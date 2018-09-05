@@ -22,7 +22,7 @@
 }
 
 %form-control {
-  + .input-group-btn .btn-outline-secondary {
+  + .input-group-append .btn-outline-secondary {
     border-color: $input-border-color;
 
     &:not(:disabled):not(.disabled) {
@@ -60,7 +60,7 @@
   &.disabled {
     @extend %form-control-disabled;
 
-    + .input-group-btn .btn {
+    + .input-group-append .btn {
       @extend %form-control-disabled;
     }
   }
@@ -248,25 +248,4 @@ label + .form-control:not(:first-child) {
     border-bottom-left-radius: $input-border-radius-sm;
     border-top-left-radius: $input-border-radius-sm;
   }
-}
-
-// fix React Bootstrap generates incorrect markup (BS3 -> BS4)
-.input-group-addon {
-  @extend .input-group-text;
-}
-
-.input-group-btn,
-.input-group-addon {
-  &:first-child {
-    @extend .input-group-prepend;
-  }
-
-  &:last-child {
-    @extend .input-group-append;
-  }
-}
-
-// fix React Bootstrap doesn't allow class directly on checkbox input
-.form-check > .form-check-label > input[type='checkbox'] {
-  @extend .form-check-input;
 }

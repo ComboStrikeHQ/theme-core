@@ -50,18 +50,18 @@
       .input-group-prepend {
         margin-bottom: $cell-padding-offset;
         margin-top: $cell-padding-offset;
-      }
 
-      .form-group,
-      .input-group,
-      .btn-group {
-        margin-bottom: 0;
+        > * {
+          margin-bottom: 0;
+          margin-top: 0;
+        }
       }
 
       .form-group,
       .input-group,
       .btn-group {
         display: flex;
+        margin-bottom: 0;
       }
     }
   }
