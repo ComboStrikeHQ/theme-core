@@ -18,6 +18,10 @@
     display: flex;
     width: 100%;
 
+    &:not(:disabled):not(.disabled) {
+      cursor: text;
+    }
+
     .react-select__button__label {
       color: $input-focus-color;
       flex-grow: 1;
