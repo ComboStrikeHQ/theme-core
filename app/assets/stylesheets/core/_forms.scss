@@ -22,6 +22,9 @@
 }
 
 %form-control {
+  background-clip: border-box;
+  transition: $btn-transition;
+
   + .input-group-append .btn-outline-secondary {
     border-color: $input-border-color;
 
@@ -35,16 +38,24 @@
   }
 
   &:not(:disabled):not(.disabled) {
+    background-color: $input-bg;
+    border-color: $input-border-color;
+
     &:hover,
     &:focus,
-    &:active {
+    &:active,
+    &.focus,
+    &.active {
       background-color: $input-focus-bg;
     }
 
+    &:hover:active:focus,
     &.active:focus,
     &:active:focus,
     &:active,
-    &:focus {
+    &:focus,
+    &.focus,
+    &.active {
       @extend %form-control-focus;
     }
 
@@ -216,11 +227,27 @@ input::-webkit-contacts-auto-fill-button {
 }
 
 
+
 // removes gray border from inputs when they are on a darker background
 @each $color, $value in $theme-colors {
   @if $color != 'light' and $color != 'white' {
     .bg-#{$color} {
-      @include form-border-color(transparent);
+      .btn-input,
+      .form-control {
+        &:not(:disabled):not(.disabled) {
+          &,
+          &:active,
+          &:active:focus,
+          &:focus,
+          &:hover,
+          &:hover:active:focus,
+          &.active,
+          &.active:focus,
+          &.focus {
+            border-color: transparent;
+          }
+        }
+      }
 
       .card {
         @include form-border-color($input-border-color);

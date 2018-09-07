@@ -25,6 +25,7 @@
     .react-select__button__label {
       color: $input-focus-color;
       flex-grow: 1;
+      padding-right: $spacer / 2;
       text-align: left;
 
       &.placeholder {
@@ -51,16 +52,24 @@ body > .react-select__container {
     border-radius: $input-border-radius;
     border-width: $input-border-width;
     min-height: $input-height;
-    transition: $input-transition;
+    transition: $btn-transition;
+    background-color: $input-bg;
 
     .react-select__indicator {
       color: $input-border-color;
-      padding-top: 0;
-      padding-bottom: 0;
+      padding: 0 ($input-btn-padding-x / 4);
+
+      &:first-child {
+        padding-left: $input-btn-padding-x / 2;
+      }
+
+      &:last-child {
+        padding-right: $input-btn-padding-x / 2;
+      }
     }
 
     .react-select__value-container {
-      padding: 0 $input-btn-padding-x;
+      padding: 0 $input-btn-padding-x-sm 0 $input-btn-padding-x;
 
       .react-select__input {
         color: $input-focus-color;
@@ -68,7 +77,6 @@ body > .react-select__container {
 
       > .react-select__single-value,
       > .react-select__placeholder {
-        max-width: calc(100% - #{$input-btn-padding-x * 2});
         margin-left: 0;
         transition: color .15s ease-out,
                     margin .2s ease-out,
@@ -102,7 +110,7 @@ body > .react-select__container {
 
       .react-select__single-value,
       .react-select__placeholder {
-        margin-left: $spacer / 2;
+        margin-left: $spacer / 3;
         color: $input-placeholder-color;
       }
     }
@@ -147,7 +155,15 @@ body > .react-select__container {
       }
 
       .react-select__indicator {
-        padding: 0 ($input-btn-padding-x-sm / 2);
+        padding: 0 ($input-btn-padding-x-sm / 4);
+
+        &:first-child {
+          padding-left: $input-btn-padding-x-sm / 2;
+        }
+
+        &:last-child {
+          padding-right: $input-btn-padding-x-sm / 2;
+        }
       }
     }
 
@@ -163,7 +179,19 @@ body > .react-select__container {
       font-size: $font-size-lg;
 
       .react-select__value-container {
-        padding: 0 $input-btn-padding-x-lg;
+        padding: 0 $input-btn-padding-x 0 $input-btn-padding-x-lg;
+      }
+
+      .react-select__indicator {
+        padding: 0 ($input-btn-padding-x-lg / 4);
+
+        &:first-child {
+          padding-left: $input-btn-padding-x-lg / 2;
+        }
+
+        &:last-child {
+          padding-right: $input-btn-padding-x-lg / 2;
+        }
       }
     }
   }
@@ -178,7 +206,23 @@ body > .react-select__container {
   }
 
   &.select--in-toolbar {
+    .react-select__control,
+    .react-select__control--is-focused {
+      &,
+      &:active,
+      &:active:focus,
+      &:focus,
+      &:hover,
+      &:hover:active:focus,
+      &.active,
+      &.active:focus,
+      &.focus {
+        border-color: transparent;
+      }
+    }
+
     .react-select__menu {
+      border-color: transparent;
       box-shadow: $input-btn-focus-box-shadow;
     }
   }
