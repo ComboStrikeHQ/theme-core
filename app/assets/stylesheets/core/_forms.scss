@@ -176,8 +176,8 @@ input[type=number] {
 }
 
 .form-control,
-.Select-control,
-.btn-input {
+.btn-input,
+.input-group-text {
   .form-group.is-invalid &,
   .form-group.has-error & {
     @extend %invalid-control;
@@ -226,32 +226,35 @@ input::-webkit-contacts-auto-fill-button {
   opacity: 0;
 }
 
+%borderless-controls {
+  .btn-input,
+  .form-control,
+  .input-group-text {
+    &:not(:disabled):not(.disabled) {
+      &,
+      &:active,
+      &:active:focus,
+      &:focus,
+      &:hover,
+      &:hover:active:focus,
+      &.active,
+      &.active:focus,
+      &.focus {
+        border-color: transparent;
+      }
+    }
+  }
 
+  .card {
+    @include form-border-color($input-border-color);
+  }
+}
 
 // removes gray border from inputs when they are on a darker background
 @each $color, $value in $theme-colors {
   @if $color != 'light' and $color != 'white' {
     .bg-#{$color} {
-      .btn-input,
-      .form-control {
-        &:not(:disabled):not(.disabled) {
-          &,
-          &:active,
-          &:active:focus,
-          &:focus,
-          &:hover,
-          &:hover:active:focus,
-          &.active,
-          &.active:focus,
-          &.focus {
-            border-color: transparent;
-          }
-        }
-      }
-
-      .card {
-        @include form-border-color($input-border-color);
-      }
+      @extend %borderless-controls;
     }
   }
 }
