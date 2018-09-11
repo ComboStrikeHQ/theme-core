@@ -26,7 +26,6 @@
 // new button class: matching checkbox toggle buttons with other inputs
 .btn-input {
   @extend %form-control;
-  @include button-variant($input-bg, $input-border-color, $white, $input-border-color, $white, $input-focus-border-color);
   text-decoration: none;
 }
 

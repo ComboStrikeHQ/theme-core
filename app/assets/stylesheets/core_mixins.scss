@@ -16,18 +16,18 @@
   }
 }
 
-// scss-lint:disable SelectorFormat
 @mixin form-border-color($color: transparent) {
-  .Select > .Select-control,
+  .btn-input,
   .form-control {
-    &:not(:focus),
-    &:not(:active),
-    &:not(:hover) {
-      border-color: $color;
+    &:not(:disabled):not(.disabled) {
+      &:not(:focus),
+      &:not(:active),
+      &:not(:hover) {
+        border-color: $color;
+      }
     }
   }
 }
-// scss-lint:enable SelectorFormat
 
 @mixin multiline-ellipsis($one, $two) {
 }
