@@ -45,3 +45,19 @@
 .no-shadow {
   box-shadow: none;
 }
+
+// negative margin to offset button padding
+.btn-offset {
+  margin-bottom: -$input-btn-padding-y;
+  margin-top: -$input-btn-padding-y;
+}
+
+.btn-offset-sm {
+  margin-bottom: -$input-btn-padding-y-sm;
+  margin-top: -$input-btn-padding-y-sm;
+}
+
+.btn-offset-lg {
+  margin-bottom: -$input-btn-padding-y-lg;
+  margin-top: -$input-btn-padding-y-lg;
+}
