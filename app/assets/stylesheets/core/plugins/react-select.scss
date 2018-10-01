@@ -47,9 +47,14 @@ body > .react-select__container {
   width: 100%;
   z-index: $zindex-dropdown;
 
+  .react-select__control,
+  .react-select__menu {
+    border-radius: $input-border-radius;
+    overflow: hidden;
+  }
+
   .react-select__control {
     border-color: $input-border-color;
-    border-radius: $input-border-radius;
     border-width: $input-border-width;
     min-height: $input-height;
     transition: $btn-transition;
@@ -145,10 +150,14 @@ body > .react-select__container {
   }
 
   &.select--sm {
-    .react-select__control {
-      min-height: $input-height-sm;
+    .react-select__control,
+    .react-select__menu {
       border-radius: $input-border-radius-sm;
       font-size: $font-size-sm;
+    }
+
+    .react-select__control {
+      min-height: $input-height-sm;
 
       .react-select__value-container {
         padding: 0 $input-btn-padding-x-sm;
@@ -166,17 +175,17 @@ body > .react-select__container {
         }
       }
     }
-
-    .react-select__menu {
-      font-size: $font-size-sm;
-    }
   }
 
   &.select--lg {
-    .react-select__control {
-      min-height: $input-height-lg;
+    .react-select__control,
+    .react-select__menu {
       border-radius: $input-border-radius-lg;
+    }
+
+    .react-select__control {
       font-size: $font-size-lg;
+      min-height: $input-height-lg;
 
       .react-select__value-container {
         padding: 0 $input-btn-padding-x 0 $input-btn-padding-x-lg;
