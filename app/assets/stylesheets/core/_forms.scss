@@ -252,7 +252,7 @@ input::-webkit-contacts-auto-fill-button {
 
 // removes gray border from inputs when they are on a darker background
 @each $color, $value in $theme-colors {
-  @if $color != 'light' and $color != 'white' {
+  @if $color != 'light' and $color != 'white' and $color != 'body' {
     .bg-#{$color} {
       @extend %borderless-controls;
     }
