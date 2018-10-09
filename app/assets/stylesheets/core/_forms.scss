@@ -28,7 +28,7 @@
   + .input-group-append .btn-outline-secondary {
     border-color: $input-border-color;
 
-    &:not(:disabled):not(.disabled) {
+    &:not(:disabled):not(.disabled):not([readonly]):not(.readonly) {
       &:hover,
       &:focus,
       &:active {
@@ -37,7 +37,7 @@
     }
   }
 
-  &:not(:disabled):not(.disabled) {
+  &:not(:disabled):not(.disabled):not([readonly]):not(.readonly) {
     background-color: $input-bg;
     border-color: $input-border-color;
 
@@ -76,7 +76,8 @@
     }
   }
 
-  &[readonly] {
+  &[readonly],
+  &.readonly {
     background-color: transparent;
     border-color: rgba($input-border-color, $btn-disabled-opacity);
   }
@@ -230,7 +231,7 @@ input::-webkit-contacts-auto-fill-button {
   .btn-input,
   .form-control,
   .input-group-text {
-    &:not(:disabled):not(.disabled) {
+    &:not(:disabled):not(.disabled):not([readonly]):not(.readonly) {
       &,
       &:active,
       &:active:focus,
