@@ -1,10 +1,3 @@
-// scss-lint:disable NestingDepth
-
-// React Bootstrap may still generate '.btn-xs' (removed in BS4)
-.btn-xs {
-  @extend .btn-sm;
-}
-
 .btn {
   // separate icon from label (within button)
   &:not(.btn-extend) .fab,
@@ -49,7 +42,8 @@
   }
 
   &:not(.disabled):not(:disabled):hover,
-  .btn-group:not(.disabled):not(:disabled) &:hover {
+  .btn-group:not(.disabled):not(:disabled) &:hover,
+  .show &.dropdown-toggle:not(.disabled):not(:disabled) {
     .fab,
     .fas {
       margin-right: $spacer / 3;

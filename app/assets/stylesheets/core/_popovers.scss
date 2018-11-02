@@ -34,12 +34,10 @@
     @extend .popover-header;
   }
 
-  .popover-body,
-  .popover-content {
+  > .popover-body {
     @extend .popover-body;
 
-    > .popover-body,
-    > .popover-content {
+    .popover-body {
       padding: $popover-body-padding-y 0;
     }
 
@@ -61,115 +59,6 @@
 
     .v-divider {
       border-left: 1px dashed $gray-200;
-    }
-  }
-
-  .popover-content {
-    // > .popover-content {
-    //   padding: $popover-body-padding-y 0;
-    // }
-
-    .popover-footer {
-      @extend .modal-footer;
-      margin-left: -$popover-body-padding-x;
-      margin-right: -$popover-body-padding-x;
-      margin-bottom: -$popover-body-padding-y;
-      padding: $popover-body-padding-y $popover-body-padding-x;
-    }
-  }
-
-  &.in {
-    display: block;
-  }
-
-  &.top,
-  &.bottom {
-    .arrow {
-      left: 50%;
-      margin-left: -($popover-arrow-width / 2);
-    }
-  }
-
-  &.top {
-    @extend .bs-popover-top;
-    margin-left: -$popover-arrow-width;
-  }
-
-  &.bottom {
-    @extend .bs-popover-bottom;
-    margin-left: -$popover-arrow-width;
-
-    .popover-header::before {
-      margin-top: -$popover-border-width;
-    }
-  }
-
-  &.left {
-    @extend .bs-popover-left;
-    margin-left: -$popover-arrow-width;
-  }
-
-  &.right {
-    @extend .bs-popover-right;
-    margin-right: -$popover-arrow-width;
-  }
-}
-
-// BS4 -> BS3 class mappings for react-bootstrap
-.tooltip {
-  .tooltip-inner {
-    @extend %popover-panel;
-    padding: $popover-header-padding-y $popover-header-padding-x;
-  }
-
-  .tooltip-arrow {
-    @extend .arrow;
-  }
-
-  &.top,
-  &.right,
-  &.bottom,
-  &.left {
-    padding: 0;
-  }
-
-  &.top {
-    @extend .bs-tooltip-top;
-    margin-top: -$tooltip-arrow-height;
-
-    .arrow {
-      bottom: -$tooltip-arrow-height;
-      margin-left: -($tooltip-arrow-width / 2);
-    }
-  }
-
-  &.right {
-    @extend .bs-tooltip-right;
-    margin-left: $tooltip-arrow-height;
-
-    .arrow {
-      left: -$tooltip-arrow-height;
-      margin-top: -($tooltip-arrow-width / 2);
-    }
-  }
-
-  &.bottom {
-    @extend .bs-tooltip-bottom;
-    margin-top: $tooltip-arrow-height;
-
-    .arrow {
-      margin-left: -($tooltip-arrow-width / 2);
-      top: -$tooltip-arrow-height;
-    }
-  }
-
-  &.left {
-    @extend .bs-tooltip-left;
-    margin-left: -$tooltip-arrow-height;
-
-    .arrow {
-      margin-top: -($tooltip-arrow-width / 2);
-      right: -$tooltip-arrow-height;
     }
   }
 }

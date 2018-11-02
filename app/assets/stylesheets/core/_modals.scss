@@ -1,19 +1,3 @@
-// apply .fade.show styles to .fade.in (BS3 '.in' -> BS4 '.show')
-.fade.in {
-  opacity: 1;
-}
-
-.modal-backdrop.fade.in {
-  opacity: .5;
-}
-
-.modal-dialog {
-  // When fading in the modal, animate it to slide down
-  .modal.in & {
-    transform: translate(0, 0);
-  }
-}
-
 .modal-header {
   margin-bottom: -$border-width;
 }
