@@ -1,5 +1,15 @@
 // scss-lint:disable PseudoElement QualifyingElement SelectorFormat
 
+.form-group,
+.input-group {
+  position: relative; // fix for absolutely positioned feedback
+  flex-wrap: wrap; // prevent feedback-text squashed next to input
+
+  .form-text {
+    width: 100%; // prevent feedback-text squashed next to input
+  }
+}
+
 // form-control
 %form-control-disabled {
   &,
@@ -19,6 +29,16 @@
   box-shadow: $input-btn-focus-box-shadow;
   color: $input-focus-color;
   outline: none;
+}
+
+%invalid-control {
+  border-color: $form-feedback-invalid-color;
+
+  &:focus,
+  .is-open & {
+    border-color: $form-feedback-invalid-color;
+    box-shadow: 0 0 0 $input-focus-width rgba($form-feedback-invalid-color, .25);
+  }
 }
 
 %form-control {
@@ -59,11 +79,9 @@
       @extend %form-control-focus;
     }
 
-    &.has-error,
-    &.has-danger,
-    .has-error &,
-    .has-danger & {
-      @extend .border-danger;
+    .is-invalid &,
+    &.is-invalid {
+      @extend %invalid-control;
     }
   }
 
@@ -85,6 +103,16 @@
 
 .form-control {
   @extend %form-control;
+}
+
+.btn-input,
+.input-group-text {
+  &:not(:disabled):not(.disabled):not([readonly]):not(.readonly) {
+    .is-invalid &,
+    &.is-invalid {
+      @extend %invalid-control;
+    }
+  }
 }
 
 // button-styled checkboxes (toggle-buttons)
@@ -154,69 +182,35 @@ input[type=number] {
   }
 }
 
-// help-text, errors, validation
+// errors, validation
 
-// ensure help-text doesn't squash to the side of input
-.form-group,
-.input-group {
-  flex-wrap: wrap;
-
-  .form-text {
-    width: 100%;
-  }
-}
-
-%invalid-control {
-  border-color: $form-feedback-invalid-color;
-
-  &:focus,
-  .is-open & {
-    border-color: $form-feedback-invalid-color;
-    box-shadow: 0 0 0 $input-focus-width rgba($form-feedback-invalid-color, .25);
-  }
-}
-
-.form-control,
-.btn-input,
-.input-group-text {
-  .form-group.is-invalid &,
-  .form-group.has-error & {
-    @extend %invalid-control;
-  }
-}
-
-%help-block {
-  border-radius: 0 0 $border-radius-sm $border-radius-sm;
+%form-feedback {
   float: right;
   font-family: $font-family-base;
   font-size: .8em;
   font-style: italic;
-  margin: 0 ($spacer / 2) ($spacer / 4);
+  margin: 0 ($spacer / 2);
   padding: ($spacer / 5) ($spacer / 2);
+  width: auto;
 
-  .has-error &,
-  .has-danger & {
+  .is-invalid &,
+  &.invalid-feedback {
     color: $danger;
-
-    .bg-gradient & {
-      background: $danger;
-      color: $white;
-      margin: 0 $spacer ($spacer / 4);
-    }
   }
 
   // avoid help/error text pushing up fields that are aligned to the bottom
   .align-items-end & {
-    margin: 0;
-    padding: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
     position: absolute;
     right: 0;
   }
 }
 
-.help-block,
 .form-control-feedback {
-  @extend %help-block;
+  @extend %form-feedback;
 }
 
 // fixes / hacks

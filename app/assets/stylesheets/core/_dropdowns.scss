@@ -1,35 +1,7 @@
-%dropdown-menu {
+.dropdown-menu {
   @extend %popover-panel;
   margin-bottom: $spacer / 3;
   margin-top: $spacer / 3;
-
-  // for for BS3 style dropdowns (React Bootstrap)
-  > li:not(.dropdown-item) > a {
-    @extend .dropdown-item;
-  }
-
-  // for for BS3 style dropdowns (React Bootstrap)
-  // '.open' = BS3, '.show' = BS4
-  .dropdown.open > &,
-  .dropup.open > & {
-    display: block;
-  }
-
-  // for conflict between BS3 and BS4 style dropdowns (React Bootstrap)
-  // BS4 uses 'data-toggle=dropdown'
-  .dropdown-toggle:not([data-toggle='dropdown']) + &.dropdown-menu-right {
-    left: auto;
-    right: 0;
-  }
-
-  .dropup .dropdown-toggle:not([data-toggle='dropdown']) + & {
-    bottom: 100%;
-    top: auto;
-  }
-}
-
-.dropdown-menu {
-  @extend %dropdown-menu;
 }
 
 // autosuggest

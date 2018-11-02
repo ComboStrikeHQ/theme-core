@@ -44,17 +44,6 @@ footer {
   }
 }
 
-// fix for generated markup using BS3 badge class
-.badge-default {
-  @extend .badge-secondary;
-}
-
-// fix for bug with collapsing elements disappearing and reappearing during transition
-.collapse.in,
-.collapsing {
-  display: block;
-}
-
 // when using '*-body' classes for padding and 'hr' for section separation
 .card-body + hr,
 .modal-body + hr {
