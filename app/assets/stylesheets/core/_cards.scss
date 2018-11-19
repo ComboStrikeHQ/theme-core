@@ -7,14 +7,26 @@
     margin-bottom: 0;
   }
 
-  > .col,
-  > [class*='col-'] {
-    padding-bottom: 5px;
-    padding-top: 5px;
+  &,
+  > .row,
+  > .form-row {
+    > .col,
+    > [class*='col-'] {
+      margin-bottom: $spacer / 4;
+      margin-top: $spacer / 4;
+    }
+  }
+
+  .col-form-label {
+    align-self: center;
   }
 }
 
 .card-header {
+  + .btn-toolbar {
+    padding: ($spacer / 3) $card-spacer-x;
+  }
+
   .form-inline .col-form-label {
     margin-right: $spacer / 3;
   }
