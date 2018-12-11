@@ -5,3 +5,4 @@ source 'https://rubygems.org'
 gemspec
 
 gem 'rubocop-ci', git: 'https://github.com/ad2games/rubocop-ci.git'
+gem 'jquery-rails'
