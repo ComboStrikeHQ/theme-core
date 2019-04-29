@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.files     = `git ls-files`.split("\n")
   s.require_paths = %w[lib assets fonts]
 
-  s.add_dependency 'bootstrap', '~> 4.3.1'
+  s.add_dependency 'bootstrap', '~> 4.1.1'
   s.add_dependency 'font-awesome-sass'
   s.add_dependency 'jquery-rails'
   s.add_dependency 'sass-rails'
